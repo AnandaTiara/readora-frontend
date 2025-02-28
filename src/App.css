@@ -1,0 +1,97 @@
+@font-face {
+  font-family: WulkanDisplayLight;
+  src: url("./assets/fonts/WulkanDisplayLight.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: WulkanDisplayRegular;
+  src: url("./assets/fonts/WulkanDisplayRegular.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: WulkanDisplaySemiBold;
+  src: url("./assets/fonts/WulkanDisplaySemiBold.ttf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: WulkanDisplayBold;
+  src: url("./assets/fonts/WulkanDisplayBold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: AileronLight;
+  src: url("./assets/fonts/Aileron-Light.otf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: AileronRegular;
+  src: url("./assets/fonts/Aileron-Regular.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: AileronSemiBold;
+  src: url("./assets/fonts/Aileron-SemiBold.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: AileronBold;
+  src: url("./assets/fonts/Aileron-Bold.otf");
+  font-weight: 700;
+}
+
+@theme{
+  --font-WulkanDisplayLight : WulkanDisplayLight;
+  --font-WulkanDisplayRegular : WulkanDisplayRegular;
+  --font-WulkanDisplaySemiBold : WulkanDisplaySemiBold;
+  --font-WulkanDisplayBold : WulkanDisplayBold;
+  --font-AileronLight : AileronLight;
+  --font-AileronRegular : AileronRegular;
+  --font-AileronSemiBold : AileronSemiBold;
+  --font-AileronBold : AileronBold;
+  
+  --color-primary-50 : #edf1ed;
+  --color-primary-100 : #c7d5c7;
+  --color-primary-200 : #acc0ab;
+  --color-primary-300 : #86a485;
+  --color-primary-400 : #6e926d;
+  --color-primary-500 : #4a7749;
+  --color-primary-600 : #436c42;
+  --color-primary-700 : #355434;
+  --color-primary-800 : #294128;
+  --color-primary-900 : #1f321f;
+
+  --color-neutral-50 : #fffffc;
+  --color-neutral-100 : #fefff5;
+  --color-neutral-200 : #fefff0;
+  --color-neutral-300 : #feffea;
+  --color-neutral-400 : #fdffe5;
+  --color-neutral-500 : #fdffdf;
+  --color-neutral-600 : #e6e8cb;
+  --color-neutral-700 : #b4b59e;
+  --color-neutral-800 : #8b8c7b;
+  --color-neutral-900 : #6a6b5e;
+
+  --color-accent-50 : #fcefe8;
+  --color-accent-100 : #f4ceb9;
+  --color-accent-200 : #efb697;
+  --color-accent-300 : #e89568;
+  --color-accent-400 : #e3814a;
+  --color-accent-500 : #dc611d;
+  --color-accent-600 : #c8581a;
+  --color-accent-700 : #9c4515;
+  --color-accent-800 : #793510;
+  --color-accent-900 : #5c290c;
+
+  --color-base-black : #323232;
+
+}
+
+@import "tailwindcss";
+
