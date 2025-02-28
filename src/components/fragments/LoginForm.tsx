@@ -18,9 +18,6 @@ const LoginForm: React.FC = () => {
         <form className="w-full flex flex-col mb-6">
           <Input label="Email/username" placeholder="username@email.com" id="email" />
           <PasswordInput label="Password" id={"password"} />
-          <div className="mt-4 mb-4 text-accent-500 text-base text-right cursor-pointer">
-            Forgot Password?
-          </div>
           <Button type="submit">Sign-In</Button>
         </form>
 

@@ -8,12 +8,11 @@ interface InputProps {
   type?: string;
   placeholder?: string;
   id?: string;
-  icon?: string | IconType;
   children?: React.ReactNode
   className?: ClassNameValue
 }
 
-const Input: React.FC<InputProps> = ({ label, type, placeholder, id, icon, children, className}) => {
+const Input: React.FC<InputProps> = ({ label, type, placeholder, id, children, className}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (

@@ -11,7 +11,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
         {children}
       </div>
 
-      <div className='w-full flex  items-center justify-center '>
+      <div className='w-1/2 flex  items-center justify-center '>
         <img
           src="/image/Login Art.png"
           alt="Login Illustration"

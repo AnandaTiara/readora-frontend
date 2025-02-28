@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import Input from "../elements/Input";
 import Button from "../elements/Button";
-import { IoSearch } from "react-icons/io5";
 import { BiSearch } from "react-icons/bi";
 
 const Navbar = () => {
@@ -13,7 +11,7 @@ const Navbar = () => {
       <div className="rounded-full flex justify-between items-center px-16 py-4 w-[95%] p-4 backdrop-blur bg-[rgba(255, 255, 255, 0.70)]">
         <div className="flex gap-2 items-center">
           <div className="-mt-2">
-           <img src="/image/Logo.png"  alt="Logo Readora"  />
+            <img src="/image/Logo.png" alt="Logo Readora" />
           </div>
           <div className=" flex items-end">
             <p className="text-xl font-WulkanDisplayLight text-gray-900">
@@ -52,32 +50,22 @@ const Navbar = () => {
 
         {/* Search Bar */}
         <div className="relative flex items-center w-1/3 z-10">
-        <div className="w-full relative">
-          <input type="text" placeholder="Search" className="border-[#dde1eb] h-14 w-full p-3 bg-white border rounded-lg mt-2 mb-2 outline-none transition-all duration-200" />
-          <button className="p-2 bg-accent-500 text-white absolute top-1/2 right-4 transform -translate-y-1/2 rounded-full">
-            <BiSearch size={24} />
-          </button>
+          <div className="w-full relative">
+            <input
+              type="text"
+              placeholder="Search"
+              className="border-[#dde1eb] h-14 w-full p-3 bg-white border rounded-lg mt-2 mb-2 outline-none transition-all duration-200 focus:border-accent-500 "
+            />
+            <button className="p-2 bg-accent-500 text-white absolute top-1/2 right-4 transform -translate-y-1/2 rounded-full hover:bg-accent-300 active:bg-accent-700 cursor-pointer">
+              <BiSearch size={24} />
+            </button>
+          </div>
         </div>
 
-
-          {/* <Input
-            type="text"
-            placeholder="Search "
-            className="border-[#dde1eb] h-14 w-full p-3 bg-white border rounded-lg mt-2 mb-2 outline-none transition-all duration-200"
-          > */}
-            {/* <Button className="absolute right-2 bg-orange-500 text-white rounded-full p-2 hover:bg-orange-600">
-              <IoSearch size={16} />
-            </Button> */}
-          {/* </Input> */}
-        </div>  
-
-        {/* <div className="h-full w"> */}
-          <Button  className="mt-0 rounded-lg z-10">Login</Button>
-        {/* </div> */}
-
+        <Button className="mt-0 rounded-lg z-10 cursor-pointer">Login</Button>
       </div>
     </nav>
-  )
+  );
 };
 
 export default Navbar;

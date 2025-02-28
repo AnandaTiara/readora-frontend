@@ -1,4 +1,3 @@
-import React from 'react'
 import Header from '../components/fragments/Header'
 import Section1 from '../components/fragments/Section1'
 import MainPage from '../components/fragments/MainPage'
