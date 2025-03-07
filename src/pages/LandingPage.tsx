@@ -1,7 +1,9 @@
-import Header from '../components/fragments/Header'
-import Section1 from '../components/fragments/Section1'
-import MainPage from '../components/fragments/MainPage'
-import Navbar from '../components/fragments/Navbar'
+import Header from '../fragments/Header'
+import Section1 from '../fragments/Section1'
+import Navbar from '../components/elements/Navbar'
+import Section2 from '../fragments/Section2'
+import Footer from '../fragments/Footer'
+import MainLanding from '../fragments/MainLanding'
 
 const LandingPage = () => {
   return (
@@ -9,7 +11,9 @@ const LandingPage = () => {
       <Navbar />
       <Header/>
       <Section1/>
-      <MainPage/>
+      <MainLanding/>
+      <Section2/>
+      <Footer/>
     </div>
   )
 }

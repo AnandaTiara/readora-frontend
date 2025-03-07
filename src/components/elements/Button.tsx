@@ -2,11 +2,10 @@ import React from "react";
 import { cn } from "../../utils/cn";
 
 interface ButtonProps {
-  text?: string;
   onClick?: () => void;
   type?: "button" | "submit";
   className?: string;
-  children?: string;
+  children?: string | React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({ children, onClick, type, className }) => {

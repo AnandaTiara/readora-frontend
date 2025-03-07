@@ -47,8 +47,8 @@ module.exports = {
       },
 
       fontFamily: {
-        wulkan: ["Wulkan Display", "sans-serif"],
-        aileron: ["Aileron", "sans-serif"],
+        wulkan: ["Wulkan Display", "times new roman"],
+        aileron: ["Aileron", "times new roman"],
       },
     },
   },

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { IconType } from "react-icons";
 import { cn } from "../../utils/cn";
 import { ClassNameValue } from "tailwind-merge";
 

@@ -1,7 +1,7 @@
 import React from "react";
-import Input from "../elements/Input";
-import PasswordInput from "../elements/PassInput";
-import Button from "../elements/Button";
+import Input from "../components/elements/Input";
+import PasswordInput from "../components/elements/PassInput";
+import Button from "../components/elements/Button";
 import { Link } from "react-router-dom";
 
 const RegisterForm: React.FC = () => {

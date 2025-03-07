@@ -1,14 +1,14 @@
 import React from "react";
-import Input from "../elements/Input";
-import PasswordInput from "../elements/PassInput";
-import Button from "../elements/Button";
+import Input from "../components/elements/Input";
+import PasswordInput from "../components/elements/PassInput";
+import Button from "../components/elements/Button";
 import { Link } from "react-router-dom";
 
 const LoginForm: React.FC = () => {
   return (
-    <div className="w-1/2 flex flex-col justify-center">
+    <div className="lg:w-1/2 flex flex-col justify-center">
       <div className="max-w-md mx-auto">
-        <h2 className="text-primary-500 text-4xl font-semibold font-Aileron">
+        <h2 className="text-primary-500 text-4xl font-WulkanDisplayBold">
           Welcome Back!👋
         </h2>
         <p className="text-neutral-700 text-basefont-AileronSemiBold mt-6 mb-6">

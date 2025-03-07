@@ -1,49 +1,53 @@
 @font-face {
   font-family: WulkanDisplayLight;
-  src: url("./assets/fonts/WulkanDisplayLight.ttf");
+  src: url("./fonts/WulkanDisplayLight.ttf");
   font-weight: 300;
 }
 
 @font-face {
   font-family: WulkanDisplayRegular;
-  src: url("./assets/fonts/WulkanDisplayRegular.ttf");
+  src: url("/fonts/WulkanDisplayRegular.ttf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: WulkanDisplaySemiBold;
-  src: url("./assets/fonts/WulkanDisplaySemiBold.ttf");
+  src: url("/fonts/WulkanDisplaySemiBold.ttf");
   font-weight: 600;
 }
 
 @font-face {
   font-family: WulkanDisplayBold;
-  src: url("./assets/fonts/WulkanDisplayBold.ttf");
+  src: url("/fonts/WulkanDisplayBold.ttf");
   font-weight: 700;
 }
 
 @font-face {
   font-family: AileronLight;
-  src: url("./assets/fonts/Aileron-Light.otf");
+  src: url("/fonts/Aileron-Light.otf");
   font-weight: 300;
 }
 
 @font-face {
   font-family: AileronRegular;
-  src: url("./assets/fonts/Aileron-Regular.otf");
+  src: url("/fonts/Aileron-Regular.otf");
   font-weight: 400;
 }
 
 @font-face {
   font-family: AileronSemiBold;
-  src: url("./assets/fonts/Aileron-SemiBold.otf");
+  src: url("/fonts/Aileron-SemiBold.otf");
   font-weight: 600;
 }
 
 @font-face {
   font-family: AileronBold;
-  src: url("./assets/fonts/Aileron-Bold.otf");
+  src: url("/fonts/Aileron-Bold.otf");
   font-weight: 700;
+}
+
+@font-face {
+  font-family: Times New Roman;
 }
 
 @theme{
@@ -55,6 +59,8 @@
   --font-AileronRegular : AileronRegular;
   --font-AileronSemiBold : AileronSemiBold;
   --font-AileronBold : AileronBold;
+  --font-TimesNewRoman : Times New Roman;
+
   
   --color-primary-50 : #edf1ed;
   --color-primary-100 : #c7d5c7;
