@@ -2,6 +2,7 @@ import Navbar from "../components/elements/Navbar";
 import { IoMdThumbsUp } from "react-icons/io";
 import { MdStar } from "react-icons/md";
 import Footer from "../fragments/Footer";
+import Premium from "../components/elements/Premium";
 
 const books = [
   {
@@ -42,7 +43,10 @@ const Search: React.FC = () => {
     <div>
       <div className="bg-neutral-500 min-h-screen p-10">
         <Navbar />
-        <div className=" max-w-auto mt-30">
+        <div className="mt-30">
+          <Premium/>
+        </div>
+        <div className=" max-w-auto mt-20">
           <h2 className="text-6xl font-WulkanDisplayBold text-primary-500">
             Search Results
           </h2>

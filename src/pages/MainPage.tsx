@@ -1,4 +1,5 @@
 import Navbar from "../components/elements/Navbar";
+import Premium from "../components/elements/Premium";
 import Footer from "../fragments/Footer";
 
 const booksOfTheDay = [
@@ -106,10 +107,13 @@ const bookSections = [
 
 const MainPage = () => {
   return (
-    <div className="h-lvh flex flex-col w-full bg-neutral-500">
+    <div className="h-[150rem] flex flex-col w-full bg-neutral-500">
       <div className="bg-neutral-600 h-[522px] rounded-b-[110px]">
         <Navbar />
-        <div className="max-w-6xl mx-auto flex min-h-fit flex-col md:flex-row md:items-center md:justify-between px-6 md:px-1">
+        <div className="mt-40">
+        <Premium/>
+        </div>
+        <div className="max-w-6xl mx-auto flex min-h-fit flex-col md:flex-row md:items-center md:justify-between px-6 md:px-1 -mt-20">
           
           <div className="md:w-1/5 -mt-72 -ml-35">
             <h2 className="text-6xl w-[20rem] font-WulkanDisplayBold font-bold text-primary-500 mt-20 md:mt-40">
@@ -136,10 +140,10 @@ const MainPage = () => {
         {/* Section Buku */}
         {bookSections.map((section) => (
           <section key={section.title} className="p-8 ml-4">
-            <h3 className="font-WulkanDisplayBold text-[42px] text-primary-500">
+            <h3 className="font-WulkanDisplayBold text-5xl text-primary-500">
               {section.title}
             </h3>
-            <p className="font-AileronRegular text-neutral-900 text-[16px]">
+            <p className="font-AileronRegular text-neutral-900 text-lg">
               {section.text}
             </p>
             <div className="flex gap-4 mt-4 overflow-x-auto  ">

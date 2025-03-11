@@ -4,14 +4,15 @@ import TextMain from "../components/elements/TextMain";
 
 const MainLanding: React.FC = () => {
   return (
-    <div className="bg-neutral-500 py-20 px-6 md:h-lvw relative w-full">
+    <div className="bg-neutral-500 w-full py-20 px-6 md:h-fit relative ">
       <h2 className="text-center font-semibold font-WulkanDisplayBold text-5xl text-primary-500 mb-20 mt-30">
       How do Readora Works?
       </h2>
 
-      <div className=" mx-auto grid md:grid-cols-2 gap-10 relative ml-10 mr-30 mt-60 ">
+      <div className="">
+      <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-10 relative md:ml-10 md:mr-30 mt-60 ">
         {/* Fitur 1 */}
-        <div className="flex items-center gap-6 col-span-2 justify-start ml-20 max-w-2xl space-x-4">
+        <div className="flex md:flex-row items-center gap-6 col-span-2 justify-start md:ml-20 max-w-2xl ">
           <BulatMain>1</BulatMain>
           <TextMain
             title="Search Easier, Read Faster"
@@ -20,7 +21,7 @@ const MainLanding: React.FC = () => {
         </div>
 
         {/* Fitur 2 */}
-        <div className="flex items-center gap-6 col-start-2 row-start-2 max-w-2xl mt-40 space-x-4">
+        <div className="flex items-center gap-6 md:col-start-2 md:row-start-2 max-w-2xl mt-40 space-x-4">
           <BulatMain>2</BulatMain>
           <TextMain
             title="Personalized Reading Experience"
@@ -29,14 +30,17 @@ const MainLanding: React.FC = () => {
         </div>
 
         {/* Fitur 3 */}
-        <div className="flex items-center gap-6 col-span-2 justify-start ml-20 max-w-2xl mt-30 space-x-4">
+        <div className="flex items-center gap-6 col-span-2 justify-start md:ml-20 max-w-2xl mt-30 space-x-4">
           <BulatMain>3</BulatMain>
           <TextMain
             title="Community & Collaboration"
             description="Diskusikan buku favoritmu dengan sesama pembaca, bagikan wawasan, dan temukan sudut pandang baru."
           />
         </div>
+      </div> 
       </div>
+
+      
 
       <div>
         {/* Gambar Buku 1 */}

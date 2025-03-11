@@ -13,7 +13,7 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, type, className }) =
     <button
       type={type}
       onClick={onClick}
-      className={cn("mt-4 px-10 py-3 bg-accent-500 rounded-xl text-neutral-50 text-base font-AileronSemiBold flex justify-center items-center hover:bg-accent-300 active:bg-accent-700 transition ", className || "")}
+      className={cn("mt-4 px-10 py-3 bg-accent-500 rounded-xl text-neutral-50 text-base font-AileronSemiBold flex justify-center items-center hover:bg-accent-300 active:bg-accent-700 transition cursor-pointer", className || "")}
     >
       {children}
     </button>

@@ -1,4 +1,5 @@
 import Navbar from "../components/elements/Navbar";
+import Premium from "../components/elements/Premium";
 import Footer from "../fragments/Footer";
 
 interface Book {
@@ -128,11 +129,23 @@ const localBooks: Book[] = [
   },
 ];
 
-const BookList = ({ title, books, text }: { text: string; title: string; books: Book[] }) => {
+const BookList = ({
+  title,
+  books,
+  text,
+}: {
+  text: string;
+  title: string;
+  books: Book[];
+}) => {
   return (
     <div className="mt-10">
-      <h3 className="text-5xl font-WulkanDisplayBold text-primary-500 mb-2">{title}</h3>
-      <p className="text-lg text-neutral-900 font-AileronRegular mb-15">{text}</p>
+      <h3 className="text-5xl font-WulkanDisplayBold text-primary-500 mb-2">
+        {title}
+      </h3>
+      <p className="text-lg text-neutral-900 font-AileronRegular mb-15">
+        {text}
+      </p>
       <div className="grid grid-cols-7 gap-4">
         {books.map((book) => (
           <div key={book.id} className="w-32">
@@ -154,15 +167,29 @@ const Saved = () => {
   return (
     <>
       <Navbar />
-        <div className="p-15 bg-neutral-500 min-h-screen">
-            <div className="mt-38 mb-30">
-                
-                <BookList title="Continue Reading" text="Read where you left off." books={continueReading} />
-                <BookList title="Saved Books" text="Books you saved." books={savedBooks} />
-                <BookList title="Local Books" text="Books you added by yourself." books={localBooks} />
-            </div>
+      <div className="p-15 bg-neutral-500 min-h-screen">
+        <div className="mt-25 mb-30">
+          <div className="mt-20">
+            <Premium />
+          </div>
+          <BookList
+            title="Continue Reading"
+            text="Read where you left off."
+            books={continueReading}
+          />
+          <BookList
+            title="Saved Books"
+            text="Books you saved."
+            books={savedBooks}
+          />
+          <BookList
+            title="Local Books"
+            text="Books you added by yourself."
+            books={localBooks}
+          />
         </div>
-        <Footer/>
+      </div>
+      <Footer />
     </>
   );
 };

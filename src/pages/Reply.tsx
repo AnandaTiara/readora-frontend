@@ -4,6 +4,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { IoMdThumbsUp } from "react-icons/io";
+import Premium from "../components/elements/Premium";
 const comments = [
   {
     author: "Achmed",
@@ -70,10 +71,14 @@ const ReviewPage = () => {
     <div className="min-h-screen bg-neutral-500 ">
       <Navbar />
       <div className="p-10 mb-30">
+      <div className="mt-30">
+      <Premium/>
+      </div>
+      
         {/* Back Button */}
         <Link
           to="/Wtr"
-          className="mb-4 flex items-center text-lg font-semibold cursor-pointer mt-35"
+          className="mb-4 flex items-center text-lg font-semibold cursor-pointer mt-20"
         >
           <IoChevronBack className="mr-2 text-base-black" /> Back
         </Link>

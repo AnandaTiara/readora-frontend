@@ -7,6 +7,7 @@ import { MdOutlineStarPurple500, MdStar, MdStarBorder } from "react-icons/md";
 import Button from "../components/elements/Button";
 import { IoMdThumbsUp } from "react-icons/io";
 import Footer from "../fragments/Footer";
+import Premium from "../components/elements/Premium";
 
 interface RatingProps {
   maxStars?: number;
@@ -131,7 +132,10 @@ const Wtr = () => {
     <div>
       <div className="bg-neutral-500 min-h-screen p-6 w-full">
         <Navbar />
-        <div className="flex flex-col md:flex-row gap-10 mt-35 w-full">
+        <div className="mt-30">
+        <Premium/>
+        </div>
+        <div className="flex flex-col md:flex-row gap-10 mt-20 w-full">
           {/* Bagian Kiri */}
           <div className="w-full md:w-1/3 -ml-5 pl-20">
             {/* Back Button */}

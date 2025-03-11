@@ -4,6 +4,7 @@ import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import Navbar from "../components/elements/Navbar";
 import { IoMdThumbsUp } from "react-icons/io";
 import Footer from "../fragments/Footer";
+import Premium from "../components/elements/Premium";
 
 interface Review {
   id: number;
@@ -144,7 +145,10 @@ const Community = () => {
     <div>
       <div className="p-8 bg-neutral-500 min-h-screen">
         <Navbar />
-        <h2 className="py-8 text-5xl font-WulkanDisplayBold text-primary-500 mt-30">
+        <div className="mt-30">
+          <Premium />
+        </div>
+        <h2 className="py-8 text-5xl font-WulkanDisplayBold text-primary-500 mt-6">
           Community
         </h2>
 
@@ -215,7 +219,6 @@ const Community = () => {
             </h2>
             {reviews.slice(0, 3).map((review) => (
               <div key={review.id} className="mb-4">
-                {/* Nama dan Rating dalam satu baris */}
                 <div className="flex items-center gap-2">
                   <h3 className="font-bold text-base-black text-xs">
                     {review.name}

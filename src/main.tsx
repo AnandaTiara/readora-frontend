@@ -12,12 +12,14 @@ import Search from "./pages/Search";
 import Reply from "./pages/Reply";
 import Community from "./pages/Community";
 import Saved from "./pages/Saved";
+import Account from "./pages/Account";
+import PremiumPage from "./pages/PremiumPage";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<MainPage />} />
       </Routes>
 
       <Routes>
@@ -58,6 +60,14 @@ createRoot(document.getElementById("root")!).render(
 
       <Routes>
         <Route path="/Saved" element={<Saved />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/Account" element={<Account />} />
+      </Routes>
+
+      <Routes>
+        <Route path="/PremiumPage" element={<PremiumPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

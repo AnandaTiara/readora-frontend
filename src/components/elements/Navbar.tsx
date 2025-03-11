@@ -43,13 +43,27 @@ const Navbar = ({className}:Props) => {
                 Browse <MdOutlineKeyboardArrowDown />
               </button>
               {isBrowseOpen && (
-                <div className="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-md py-2">
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                    Categories
-                  </a>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                    Popular
-                  </a>
+                <div className="absolute left-0 mt-2 w-40 bg-neutral-500 shadow-lg rounded-md py-2">
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Fantasy</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Science Fiction</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Mystery</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Thriller</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Horror</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Romance</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Historical Fiction</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Contemporary</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Adventure</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Drama</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Biography</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Self Help</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">History</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Business</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Science</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Religion</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Poetry</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Travel</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Art & Photography</Link>
+                  <Link to="/search" className="block px-4 py-2 hover:text-accent-500">Mental Help</Link>
                 </div>
               )}
             </div>
