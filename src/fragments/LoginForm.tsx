@@ -16,7 +16,7 @@ const LoginForm: React.FC = () => {
         </p>
 
         <form className="w-full flex flex-col mb-6">
-          <Input label="Email/username" placeholder="username@email.com" id="email" />
+          <Input  label="Email/username" placeholder="username@email.com" id="email" />
           <PasswordInput label="Password" id={"password"} />
           <Button type="submit">Sign-In</Button>
         </form>
