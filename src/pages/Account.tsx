@@ -60,6 +60,10 @@ const AccountStatus: React.FC<{
 const Account: React.FC = () => {
   const [status, setStatus] = useState<PremiumStatus>("inactive");
   const [expiryDate] = useState<string>("07-04-2025");
+  const [name, setName] = useState("")
+  const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("")
+
 
   return (
     <div>
@@ -81,15 +85,15 @@ const Account: React.FC = () => {
 
             <div className="space-y-4">
               <label className="text-base-black font-AileronLight">Name</label>
-              <Input type="text" placeholder="Name" />
+              <Input type="text" placeholder="Name" value={name} setValue={setName} />
 
               <label className="text-base-black font-AileronLight">Email</label>
-              <Input type="email" placeholder="Email" />
+              <Input type="email" placeholder="Email" value={email} setValue={setEmail} id={email} />
 
               <label className="text-base-black font-AileronLight">
                 Password
               </label>
-              <Input type="password" placeholder="Password" />
+              <Input type="password" placeholder="Password" value={password} setValue={setPassword} id={password}/>
             </div>
           </div>
 

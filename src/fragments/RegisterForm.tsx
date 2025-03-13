@@ -10,6 +10,7 @@ import { RegisterInput } from "../schemas/auth";
 const RegisterForm: React.FC = () => {
   const { handleSubmit, control } = useForm<RegisterInput>({
     defaultValues: {
+      name: "",
       username: "",
       password: "",
       email: "",
@@ -38,10 +39,23 @@ const RegisterForm: React.FC = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-3">
           <Controller
+            name="name"
+            control={control}
+            render={({ field }) => (
+              <Input id="name" label="Nama" placeholder="Nama" {...field} />
+            )}
+          />
+
+          <Controller
             name="email"
             control={control}
             render={({ field }) => (
-              <Input id="email" label="Email" placeholder="username@email.com" {...field} />
+              <Input
+                id="email"
+                label="Email"
+                placeholder="username@email.com"
+                {...field}
+              />
             )}
           />
 
@@ -49,7 +63,12 @@ const RegisterForm: React.FC = () => {
             name="username"
             control={control}
             render={({ field }) => (
-              <Input id="username" label="Username" placeholder="Masukkan username" {...field} />
+              <Input
+                id="username"
+                label="Username"
+                placeholder="Masukkan username"
+                {...field}
+              />
             )}
           />
 

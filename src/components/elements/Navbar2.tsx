@@ -8,7 +8,6 @@ import { PiMinusCircle } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
 import { cn } from "../../utils/cn";
 import { IoMoon } from "react-icons/io5";
-import { MdLogin } from "react-icons/md";
 
 type Props = {
   className?: string;
@@ -88,11 +87,8 @@ const Navbar2 = ({ className }: Props) => {
 
           <div>
             <Button className="mt-0 rounded-lg z-10 cursor-pointer hidden md:block mr-5">
-              <Link to="/Login"> Sign up</Link>
+              <Link to="/Login">Sign up</Link>
             </Button>
-            <div className="block md:hidden">
-              <MdLogin className="text-3xl mr-4" />
-            </div>
           </div>
         </div>
 
@@ -107,13 +103,15 @@ const Navbar2 = ({ className }: Props) => {
             </div>
             <div>
               <h2 className="text-lg font-AileronBold">Klara And The Sun</h2>
-              <p className="text-sm text-neutral-800 font-AileronRegular" >Kazuo Ishiguro</p>
+              <p className="text-sm text-neutral-800 font-AileronRegular">
+                Kazuo Ishiguro
+              </p>
             </div>
           </div>
           <div>
             <div className="flex flex-row mr-4 gap-3 cursor-pointer">
               <IoMoon />
-              <PiPlusCircle/>
+              <PiPlusCircle />
               <BiFontSize />
               <PiMinusCircle />
             </div>

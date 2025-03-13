@@ -28,7 +28,7 @@ const reviews: Review[] = [
     likes: 12,
     bookTitle: "The Illusion of a Simple",
     author: "Nanae Kojima",
-    cover: "/book1.jpg",
+    cover: "src/assets/image/TheIllusionOfSimple.jpg",
   },
   {
     id: 2,
@@ -39,7 +39,7 @@ const reviews: Review[] = [
     likes: 12,
     bookTitle: "A Perfect Way to Be Alone",
     author: "Nanae Kojima",
-    cover: "/book2.jpg",
+    cover: "src/assets/image/TheIllusionOfSimple.jpg",
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ const reviews: Review[] = [
     likes: 12,
     bookTitle: "A Perfect Way to Be Alone",
     author: "Nanae Kojima",
-    cover: "/book3.jpg",
+    cover: "src/assets/image/TheIllusionOfSimple.jpg",
   },
   {
     id: 4,
@@ -61,7 +61,7 @@ const reviews: Review[] = [
     likes: 12,
     bookTitle: "Heart and the World",
     author: "Deb Caletti",
-    cover: "/book4.jpg",
+    cover: "src/assets/image/TheIllusionOfSimple.jpg",
   },
 ];
 
@@ -143,12 +143,12 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
 const Community = () => {
   return (
     <div>
-      <div className="p-8 bg-neutral-500 min-h-screen">
+      <div className="p-8 bg-neutral-500 h-[150rem]">
         <Navbar />
         <div className="mt-30">
           <Premium />
         </div>
-        <h2 className="py-8 text-5xl font-WulkanDisplayBold text-primary-500 mt-6">
+        <h2 className="py-8 text-3xl lg:text-5xl font-WulkanDisplayBold text-primary-500 mt-6">
           Community
         </h2>
 
@@ -158,13 +158,13 @@ const Community = () => {
             {reviews.map((review) => (
               <div
                 key={review.id}
-                className="flex gap-4 p-4 rounded-lg mb-4 border-b border-b-neutral-600 -mt-3"
+                className="flex gap-4 p-4 rounded-lg border-b border-b-neutral-600  mb-10"
               >
                 <div className="max-w-[150px]">
                   <img
                     src={review.cover}
                     alt="Book Cover"
-                    className="w-20 h-28 object-cover rounded"
+                    className="w-[20rem] object-cover rounded"
                   />
                   {/* Judul & Author */}
                   <div className="text-xs text-neutral-800 mt-1"></div>
@@ -192,12 +192,12 @@ const Community = () => {
                   </div>
 
                   {/* Review Text */}
-                  <p className="text-neutral-800 font-AileronRegular text-lg max-w-4xl mt-2">
+                  <p className="text-neutral-800 font-AileronRegular text-sm max-w-3xl mt-2">
                     {review.text}
                   </p>
 
                   {/* Date & Likes */}
-                  <div className="mt-4 flex items-center text-neutral-700 fony-AileronRegular text-sm">
+                  <div className="mt-4 flex items-center text-neutral-700 fony-AileronRegular text-sm mb-15">
                     <span>{review.date}</span>
                     <span className="ml-4 flex items-center text-neutral-800">
                       <IoMdThumbsUp className="mr-1 -mt-1 text-2xl" />{" "}

@@ -8,6 +8,7 @@ export const LoginSchema = z.object({
 export type LoginInput = z.infer<typeof LoginSchema>;
 
 export const RegisterSchema = z.object({
+  name: z.string().min(3, "Nama minimal 3 karakter"),
   username: z.string().min(3, "Username minimal 3 karakter"),
   password: z.string().min(1, "Password minimal 1 karakter"),
   email : z.string().email("Email tidak valid"),
