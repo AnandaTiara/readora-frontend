@@ -2,7 +2,7 @@ import React from "react";
 import Input from "../components/elements/Input";
 import PasswordInput from "../components/elements/PassInput";
 import Button from "../components/elements/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LoginInput } from "../schemas/auth";
 import { Controller, useForm } from "react-hook-form";
 import { useLogin } from "../hooks/use-auth";
@@ -16,15 +16,11 @@ const LoginForm: React.FC = () => {
     mode: "onChange",
   });
 
-  const navigate = useNavigate();
-
   const { mutate: Login } = useLogin();
 
   const onSubmit = (data: LoginInput) => {
     Login(data);
-    navigate("/");
   };
-
 
   return (
     <div className="lg:w-1/2 flex flex-col justify-center">
@@ -36,7 +32,10 @@ const LoginForm: React.FC = () => {
           Mulai baca buku sekarang!
         </p>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col mb-6">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full flex flex-col mb-6"
+        >
           <Controller
             name="username"
             control={control}
