@@ -25,6 +25,20 @@ export async function Login(data: LoginInput) {
   });
   if (!response.ok) throw new Error("Failed to login");
   const res = await response.json();
+  console.log(res);
+  return res;
+}
 
+export async function getSession() {
+  const token = localStorage.getItem("token");
+  const response = await fetch(`${base_url}/api/auth/session`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  if (!response.ok) throw new Error("Failed to get session");
+  const res = await response.json();
   return res;
 }

@@ -5,8 +5,7 @@ import { BiSearch } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { cn } from "../../utils/cn";
 import { MdLogin } from "react-icons/md";
-import { useCookies } from "react-cookie";
-import { useLogout } from "../../hooks/use-auth";
+import { useLogout, useSession } from "../../hooks/use-auth";
 
 type Props = {
   className?: string;
@@ -16,8 +15,8 @@ type Props = {
 const Navbar = ({ className }: Props) => {
   const [isBrowseOpen, setIsBrowseOpen] = useState(false);
   const navigate = useNavigate();
-  const [cookies] = useCookies(["user"]);
   const { mutate: logout, isPending } = useLogout();
+  const { data: session, isLoading } = useSession();
 
   return (
     <nav className="fixed w-full top-3 flex justify-center items-center max-w-screen z-40">
@@ -207,19 +206,24 @@ const Navbar = ({ className }: Props) => {
           </div>
 
           <div>
-            {cookies.user ? (
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : session ? (
               <Button
                 onClick={() => logout()}
                 disabled={isPending}
                 className="text-sm md:text-base text-gray-900 hover:underline cursor-pointer"
               >
-                {isPending ? "Logging out..." : "Hi, Tiara!"}
+                {isPending
+                  ? "Logging out..."
+                  : `Hi, ${session.data.username || "User"}!`}
               </Button>
             ) : (
               <Button className="mt-0 rounded-lg cursor-pointer hidden md:block mr-5 z-10">
                 <Link to="/Login"> Sign up</Link>
               </Button>
             )}
+
             <div className="block md:hidden">
               <MdLogin className="text-3xl mr-4" />
             </div>

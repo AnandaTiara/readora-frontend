@@ -1,7 +1,6 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Login, Register } from "../lib/api/auth";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Login, Register, getSession } from "../lib/api/auth";
 import { RegisterInput } from "../schemas/auth";
-import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 export const useRegister = () => {
@@ -14,37 +13,43 @@ export const useRegister = () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
     },
   });
-  
 };
 
 export const useLogin = () => {
   const queryClient = useQueryClient();
-  const [, setCookie] = useCookies(["user"]);
   const navigate = useNavigate();
 
   return useMutation({
     mutationKey: ["login"],
     mutationFn: Login,
     onSuccess: (res) => {
-      setCookie("user", res.data.token, { path: "/" });
+      localStorage.setItem("token", res.data.token);
       queryClient.invalidateQueries({ queryKey: ["user"] });
       navigate("/");
     },
   });
-
 };
 
 export const useLogout = () => {
   const queryClient = useQueryClient();
-  const [, , removeCookie] = useCookies(["user"]);
 
   return useMutation({
     mutationKey: ["logout"],
     mutationFn: async () => {
-      removeCookie("user", { path: "/" });
+      localStorage.removeItem("token");
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user"] });
+      window.location.reload();
     },
+  });
+};
+
+export const useSession = () => {
+  return useQuery({
+    queryKey: ["user"],
+    queryFn: getSession,
+    retry: false,
+    refetchOnWindowFocus: false,
   });
 };

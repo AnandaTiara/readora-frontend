@@ -64,7 +64,7 @@ const RegisterForm: React.FC = () => {
             control={control}
             render={({ field }) => (
               <Input
-                id="username"
+                 id="username"
                 label="Username"
                 placeholder="Masukkan username"
                 {...field}
