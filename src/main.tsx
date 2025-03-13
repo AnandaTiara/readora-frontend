@@ -14,6 +14,7 @@ import Community from "./pages/Community";
 import Saved from "./pages/Saved";
 import Account from "./pages/Account";
 import PremiumPage from "./pages/PremiumPage";
+import Limit from "./components/elements/Limit";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -23,7 +24,7 @@ createRoot(document.getElementById("root")!).render(
       </Routes>
 
       <Routes>
-        <Route path="/register" element={<Register />} />
+        <Route path="/Register" element={<Register />} />
       </Routes>
 
       <Routes>
@@ -68,6 +69,9 @@ createRoot(document.getElementById("root")!).render(
 
       <Routes>
         <Route path="/PremiumPage" element={<PremiumPage />} />
+      </Routes>
+      <Routes>
+        <Route path="/Limit" element={<Limit />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

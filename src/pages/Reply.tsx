@@ -78,7 +78,7 @@ const ReviewPage = () => {
         {/* Back Button */}
         <Link
           to="/Wtr"
-          className="mb-4 flex items-center text-lg font-semibold cursor-pointer mt-20"
+          className="mb-4 flex items-center text-lg font-semibold cursor-pointer mt-13"
         >
           <IoChevronBack className="mr-2 text-base-black" /> Back
         </Link>

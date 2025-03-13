@@ -1,6 +1,7 @@
 import Footer from "../fragments/Footer";
 import Button from "../components/elements/Button";
 import Navbar2 from "../components/elements/Navbar2";
+import Highlight from 'react-highlight'
 
 const Read = () => {
   return (
@@ -10,9 +11,11 @@ const Read = () => {
           <Navbar2 className="md:rounded-md " />
 
           <main className="p-10 overflow-auto max-w-4xl mx-auto text-base-black mt-70 font-TimesNewRoman mb-30 ">
-            <h1 className="text-4xl text-center mb-10 font-TimesNewRoman font-bold ">Chapter 1</h1>
+            <h1 className="text-4xl text-center mb-10 font-TimesNewRoman font-bold ">
+              Chapter 1
+            </h1>
             <p className="text-lg leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <Highlight className="bg-red-400">Lorem ipsum dolor sit amet</Highlight> consectetur adipisicing elit.
               Temporibus eveniet voluptas laboriosam neque, voluptate facilis
               eum labore omnis. Illo similique, ullam ut a beatae, debitis
               expedita voluptates quae, deleniti ea blanditiis quam? Inventore

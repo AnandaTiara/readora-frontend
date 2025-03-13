@@ -4,11 +4,12 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 interface PasswordInputProps {
   label?: string;
   id?: string
+  setValue: React.Dispatch<React.SetStateAction<string>>
+  value: string
 }
 
-const PasswordInput: React.FC<PasswordInputProps> = ({ label, id}) => {
+const PasswordInput: React.FC<PasswordInputProps> = ({ label, id, value, setValue}) => {
   const [isFocused, setIsFocused] = useState(false); 
-  const [value, setValue] = useState("");
   const [isView, setIsView] = useState(false);
 
   return (

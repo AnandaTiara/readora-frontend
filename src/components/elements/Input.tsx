@@ -9,9 +9,11 @@ interface InputProps {
   id?: string;
   children?: React.ReactNode
   className?: ClassNameValue
+  setValue: React.Dispatch<React.SetStateAction<string>>
+  value?: string
 }
 
-const Input: React.FC<InputProps> = ({ label, type, placeholder, id, children, className}) => {
+const Input: React.FC<InputProps> = ({ label, type, placeholder, id, children, className, value, setValue}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
@@ -24,6 +26,7 @@ const Input: React.FC<InputProps> = ({ label, type, placeholder, id, children, c
         placeholder={placeholder}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
+        onChange={(e) => setValue(e.target.value)}
         id = {id}
       />
       {children}

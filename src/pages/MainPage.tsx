@@ -6,17 +6,17 @@ const booksOfTheDay = [
   {
     title: "Klara and the Sun",
     author: "Kazuo Ishiguro",
-    image: "src/assets/image/BookKazuoIshiguro.png",
+    image: "src/assets/image/KlaraAndTheSun.jpeg",
   },
   {
     title: "The Expansion of Awareness",
     author: "Arthur W. Osborn",
-    image: "src/assets/image/BookTheExpansionOfAwareness.png",
+    image: "src/assets/image/KlaraAndTheSun.jpeg",
   },
   {
     title: "Self Portrait in Green",
     author: "Marie Ndiaye",
-    image: "src/assets/image/BookSelfPotraitInGreen.png",
+    image: "src/assets/image/KlaraAndTheSun.jpeg",
   },
 ];
 
@@ -28,37 +28,37 @@ const bookSections = [
       {
         title: "A Perfect Day to be Alone",
         author: "Nanae Aoyama",
-        image: "src/assets/image/BookAPerfectDay.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "The Theory of Everything",
         author: "Eddy Rose",
-        image: "src/assets/image/BookTheTheory.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "A Heart & a Body in The World",
         author: "Deb Caletti",
-        image: "src/assets/image/bookAHeartInABody.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "Berta Isla",
         author: "Javier Marías",
-        image: "src/assets/image/BookBertaIsla.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "More Miracle Than Bird",
         author: "Alice Miller",
-        image: "src/assets/image/BookMoreMiracleThan.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "Outside The Box",
         author: "Maria Meindl",
-        image: "src/assets/image/BookOutsideTheBox.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "All Men Are Liars",
         author: "Alberto Manguel",
-        image: "src/assets/image/BookAllMenAreLiars.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
     ],
   },
@@ -69,37 +69,37 @@ const bookSections = [
       {
         title: "Catcher in The Rye",
         author: "J.D. Salinger",
-        image: "src/assets/image/BookCatcherInTheRye.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "A Perfect Day to be Alone",
         author: "Hannah Parker",
-        image: "src/assets/image/BookAPerfectDay.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "A Teaspoon of Earth and Sea",
         author: "Dina Nayeri",
-        image: "src/assets/image/BookATeaspoonOfEarth.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "Strange Heart Beating",
         author: "Eli Goldstone",
-        image: "src/assets/image/BookStrangeHeartBeating.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "Girl",
         author: "Edna O'Brien",
-        image: "src/assets/image/BookGirl.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "Tomb of The Unknown Racist",
         author: "Blanche McCrary Boyd",
-        image: "src/assets/image/BookTombOfTheUnknownRacist.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
         title: "Let Go My Hand",
         author: "Edward Docs",
-        image: "src/assets/image/BookLetGoMyHand.png",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
     ],
   },
