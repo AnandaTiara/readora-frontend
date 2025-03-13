@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../components/elements/Input";
 import PasswordInput from "../components/elements/PassInput";
 import Button from "../components/elements/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import apiInstance from "../API/auth";
 
 export const RegisterUser = async (username: string, password: string, email: string, name: string) => {
@@ -40,14 +40,6 @@ const RegisterForm: React.FC = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
-  const handleRegister = async () => {
-    const response = await RegisterUser(username, password, email, name)
-
-    if (response.success) {
-
-    }
-  } 
-
 
   return (
     <div className="w-1/2 flex flex-col justify-center">
@@ -60,7 +52,7 @@ const RegisterForm: React.FC = () => {
         </p>
 
         <form className="mt-6 space-y-3">
-          <Input value={name} setValue={setName} label="Nama" placeholder="Tiara" />
+          <Input value={name} setValue={setName} label="Nama" placeholder="Nama" />
           <Input value={email} setValue={setEmail} label="Email" placeholder="username@email.com" />
           <Input value={username} setValue={setUsername} label="Username" placeholder="username@email.com" />
           <PasswordInput value={password} setValue={setPassword} label="Password" id={"password"} />

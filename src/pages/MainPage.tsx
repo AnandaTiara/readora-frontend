@@ -18,6 +18,16 @@ const booksOfTheDay = [
     author: "Marie Ndiaye",
     image: "src/assets/image/KlaraAndTheSun.jpeg",
   },
+  {
+    title: "Self Portrait in Green",
+    author: "Marie Ndiaye",
+    image: "src/assets/image/KlaraAndTheSun.jpeg",
+  },
+  {
+    title: "Self Portrait in Green",
+    author: "Marie Ndiaye",
+    image: "src/assets/image/KlaraAndTheSun.jpeg",
+  },
 ];
 
 const bookSections = [
@@ -53,6 +63,31 @@ const bookSections = [
       {
         title: "Outside The Box",
         author: "Maria Meindl",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
+      },
+      {
+        title: "All Men Are Liars",
+        author: "Alberto Manguel",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
+      },
+      {
+        title: "All Men Are Liars",
+        author: "Alberto Manguel",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
+      },
+      {
+        title: "All Men Are Liars",
+        author: "Alberto Manguel",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
+      },
+      {
+        title: "All Men Are Liars",
+        author: "Alberto Manguel",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
+      },
+      {
+        title: "All Men Are Liars",
+        author: "Alberto Manguel",
         image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
       {
@@ -101,6 +136,21 @@ const bookSections = [
         author: "Edward Docs",
         image: "src/assets/image/KlaraAndTheSun.jpeg",
       },
+      {
+        title: "Let Go My Hand",
+        author: "Edward Docs",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
+      },
+      {
+        title: "Let Go My Hand",
+        author: "Edward Docs",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
+      },
+      {
+        title: "Let Go My Hand",
+        author: "Edward Docs",
+        image: "src/assets/image/KlaraAndTheSun.jpeg",
+      },
     ],
   },
 ];
@@ -111,11 +161,11 @@ const MainPage = () => {
       <div className="bg-neutral-600 h-[522px] rounded-b-[110px]">
         <Navbar />
         <div className="mt-40">
-        <Premium/>
+          <Premium />
         </div>
-        <div className="max-w-6xl mx-auto flex min-h-fit flex-col md:flex-row md:items-center md:justify-between px-6 md:px-1 -mt-20">
-          
-          <div className="md:w-1/5 -mt-72 -ml-35">
+        <div className="max-w-[1330px] mx-auto flex min-h-fit flex-col md:flex-row md:items-center md:justify-between px-6 md:px-1 -mt-20">
+          <div className="md:w-1/5 -mt-72 -ml-35 flex-col flex
+          ">
             <h2 className="text-6xl w-[20rem] font-WulkanDisplayBold font-bold text-primary-500 mt-20 md:mt-40">
               Book of the Day.
             </h2>
@@ -125,15 +175,17 @@ const MainPage = () => {
           </div>
 
           {/* Bagian Buku */}
-          <div className="flex md:w-4/5 gap-8 mt-6 md:mt-42">
-            {booksOfTheDay.map((book) => (
-              <img
-                key={book.title}
-                src={book.image}
-                alt={book.title}
-                className="w-80 bg-cover hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
-              />
-            ))}
+          <div className="flex md:w-4/5 overflow-x-auto overflow-y-hidden scrollbar-hide max-w-full">
+            <div className="flex gap-8 mt-6 md:mt-42 snap-x snap-mandatory px-4 w-max">
+              {booksOfTheDay.map((book) => (
+                <img
+                  key={book.title}
+                  src={book.image}
+                  alt={book.title}
+                  className="w-80 bg-cover hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -146,21 +198,22 @@ const MainPage = () => {
             <p className="font-AileronRegular text-neutral-900 text-lg">
               {section.text}
             </p>
-            <div className="flex gap-4 mt-4 overflow-x-auto  ">
+
+            <div className="flex gap-4 mt-4 overflow-x-scroll overflow-y-hidden scrollbar-hide whitespace-nowrap max-h-full">
               {section.books.map((book) => (
                 <div
                   key={book.title}
-                  className="text-lg p-4 rounded-lg bg-cover min-w-[150px] text-start hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
+                  className="text-lg p-4 rounded-lg bg-cover min-w-[13rem] text-start hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
                 >
                   <img
                     src={book.image}
                     alt={book.title}
                     className="w-full bg-cover"
                   />
-                  <h3 className="mt-2 font-bold text-sm text-primary-500 font-WulkanDisplaySemiBold ">
+                  <h3 className="mt-2 font-bold text-sm text-primary-500 font-WulkanDisplaySemiBold">
                     {book.title}
                   </h3>
-                  <p className="text-xs font-AileronRegular text-neutral-900 ">
+                  <p className="text-xs font-AileronRegular text-neutral-900">
                     {book.author}
                   </p>
                 </div>
@@ -168,6 +221,7 @@ const MainPage = () => {
             </div>
           </section>
         ))}
+
         <Footer className="mt-100" />
       </div>
     </div>
