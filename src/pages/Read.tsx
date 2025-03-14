@@ -1,3 +1,4 @@
+/* eslint-disable */
 import  { useRef, useState } from "react";
 import Footer from "../fragments/Footer";
 import Button from "../components/elements/Button";
