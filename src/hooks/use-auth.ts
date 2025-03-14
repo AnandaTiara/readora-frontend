@@ -25,7 +25,7 @@ export const useLogin = () => {
   return useMutation({
     mutationKey: ["login"],
     mutationFn: Login,
-    onSuccess: (res) => {
+    onSuccess: (res: any) => {
       localStorage.setItem("token", res.data.token);
       queryClient.invalidateQueries({ queryKey: ["user"] });
       navigate("/");
