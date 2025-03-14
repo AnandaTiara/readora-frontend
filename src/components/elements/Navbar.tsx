@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { cn } from "../../utils/cn";
 import { MdLogin } from "react-icons/md";
 import { useLogout, useSession } from "../../hooks/use-auth";
+import Logo from "../../assets/image/Logo.png";
 
 type Props = {
   className?: string;
@@ -30,9 +31,9 @@ const Navbar = ({ className }: Props) => {
         <div className="flex justify-between items-center">
           <div className="flex gap-2 items-center">
             <div className="-mt-2 ml-5">
-              <img src="src/assets/image/Logo.png" alt="Logo Readora" />
+              <img src={Logo} alt="Logo Readora" />
             </div>
-            <div className=" flex items-end">
+            <div className="flex items-end">
               <p
                 className="text-xl font-WulkanDisplayLight text-gray-900 cursor-pointer"
                 onClick={() => navigate("/")}

@@ -1,4 +1,5 @@
 import React from "react";
+import LoginArt from "../assets/image/Login Art.png";
 
 interface AuthLayoutProps {
   children: React.ReactNode;
@@ -13,7 +14,7 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
 
       <div className='w-full md:w-1/2  flex items-center lg:justify-center '>
         <img
-          src="src/assets/image/Login Art.png"
+          src={LoginArt}
           alt="Login Illustration"
           className="h-100 w-full p-4 lg:p-10  object-cover md:h-screen rounded-3xl lg:object-contain "
         />

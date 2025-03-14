@@ -184,7 +184,7 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
   };
 
   return (
-    <div className="flex items-center justify-end space-x-2 mt-4 cursor-pointer mb-20 mr-15">
+    <div className="flex items-center justify-end space-x-2 mt-4 cursor-pointer mb-20 mr-15 max-w-4/5">
       <button
         className="flex items-center px-3 py-2 text-neutral-800 hover:text-black cursor-pointer"
         onClick={() => goToPage(currentPage - 1)}
@@ -259,9 +259,6 @@ const Wtr = () => {
               <Link to={`/book/${data.data.id}/read`}>
                 <Button className="w-full py-4 cursor-pointer"> Read</Button>
               </Link>
-              {/* <Button className="w-full border border-accent-500 bg-neutral-500 text-neutral-900 hover:bg-neutral-600 active:shadow-lg active:bg-neutral-500 cursor-pointer">
-                <Link to="/Read">Read For Later</Link> XXXXXXXX
-              </Button> */}
             </div>
 
             <RatingComponent
@@ -271,7 +268,7 @@ const Wtr = () => {
 
           {/* Bagian Kanan */}
           <div className="w-full">
-            <div className="max-w-lg mt-13 ">
+            <div className="max-w-3xl mt-13 ">
               <h2 className="text-7xl text-primary-500 font-WulkanDisplayBold">
                 {data.data.title}
               </h2>
@@ -319,13 +316,13 @@ const Wtr = () => {
             </div>
 
             {/* Garis Pemisah */}
-            <div className="w-full h-px mt-10 bg-neutral-600"></div>
+            <div className="w-full h-px mt-10 bg-neutral-600 "></div>
 
             <div className="mt-12">
               <h3 className="text-5xl font-WulkanDisplayRegular text-primary-500">
                 Similar to title
               </h3>
-              <div className="flex gap-4 mt-4 overflow-x-scroll overflow-y-hidden scrollbar-hide whitespace-nowrap max-h-full">
+              <div className="flex gap-4 mt-4 overflow-x-scroll overflow-y-hidden scrollbar-hide whitespace-nowrap max-h-full max-w-4/5 w-">
                 {Books.map((book) => (
                   <div
                     key={book.id}
