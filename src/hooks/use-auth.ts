@@ -1,4 +1,4 @@
-/* eslint-disable */
+// @ts-ignore
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { RegisterInput, Session } from "../schemas/auth";
