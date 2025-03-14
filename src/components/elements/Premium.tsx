@@ -9,7 +9,7 @@ const Premium: React.FC = () => {
         <PiStarFourFill className="text-accent-500 text-xl" />
         <span>
           Get unlimited access to the best of Readora for less than Rp 39.000/month.{' '}
-          <Link to="/PremiumPage" className="underline text-accent-500 ml-1">
+          <Link to="/PremiumPage" className="underline text-accent-500 ml-1 z-50">
             Become a Premium User
           </Link>
         </span>

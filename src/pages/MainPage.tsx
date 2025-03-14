@@ -137,7 +137,7 @@ const MainPage = () => {
     <div className="h-[150rem] flex flex-col w-full bg-neutral-500">
       <div className="bg-neutral-600 h-[522px] rounded-b-[110px]">
         <Navbar />
-        <div className="mt-40">
+        <div className="mt-40 relative z-10">
           <Premium />
         </div>
         <div className="max-w-[1330px] mx-auto flex min-h-fit flex-col md:flex-row md:items-center md:justify-between px-6 md:px-1 -mt-20">
