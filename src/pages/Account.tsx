@@ -9,8 +9,7 @@ type PremiumStatus = "active" | "inactive" | "pending";
 
 const AccountStatus: React.FC<{
   status: PremiumStatus;
-  expiryDate?: string;
-}> = ({ status, expiryDate }) => {
+}> = () => {
   return (
     <div className="w-full lg:w-1/3 bg-white shadow-2xl rounded-2xl p-6 flex flex-col items-center justify-between">
       <h2 className="text-2xl font-AileronBold text-neutral-900 mb-6 mt-2">
@@ -58,11 +57,11 @@ const AccountStatus: React.FC<{
 };
 
 const Account: React.FC = () => {
-  const [status, setStatus] = useState<PremiumStatus>("inactive");
-  const [expiryDate] = useState<string>("07-04-2025");
-  const [name, setName] = useState("")
-  const [password, setPassword] = useState("")
-  const [email, setEmail] = useState("")
+  const [status] = useState<PremiumStatus>("inactive");
+  const [] = useState<string>("07-04-2025");
+  const [name] = useState("")
+  const [password] = useState("")
+  const [email] = useState("")
 
 
   return (
@@ -85,19 +84,19 @@ const Account: React.FC = () => {
 
             <div className="space-y-4">
               <label className="text-base-black font-AileronLight">Name</label>
-              <Input type="text" placeholder="Name" value={name} setValue={setName} />
+              <Input type="text" placeholder="Name" value={name}  />
 
               <label className="text-base-black font-AileronLight">Email</label>
-              <Input type="email" placeholder="Email" value={email} setValue={setEmail} id={email} />
+              <Input type="email" placeholder="Email" value={email} id={email} />
 
               <label className="text-base-black font-AileronLight">
                 Password
               </label>
-              <Input type="password" placeholder="Password" value={password} setValue={setPassword} id={password}/>
+              <Input type="password" placeholder="Password" value={password} id={password}/>
             </div>
           </div>
 
-          <AccountStatus status={status} expiryDate={expiryDate} />
+          <AccountStatus status={status} />
         </div>
       </div>
 

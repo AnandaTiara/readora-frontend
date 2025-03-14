@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cn } from "../utils/cn";
 import { IoMdClose } from "react-icons/io";
 import Footer from "../fragments/Footer";

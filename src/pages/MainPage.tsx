@@ -5,34 +5,6 @@ import Premium from "../components/elements/Premium";
 import Footer from "../fragments/Footer";
 import { useGetBooks } from "../hooks/use-books";
 
-const booksOfTheDay = [
-  {
-    title: "Klara and the Sun",
-    author: "Kazuo Ishiguro",
-    image: "src/assets/image/KlaraAndTheSun.jpeg",
-  },
-  {
-    title: "The Expansion of Awareness",
-    author: "Arthur W. Osborn",
-    image: "src/assets/image/KlaraAndTheSun.jpeg",
-  },
-  {
-    title: "Self Portrait in Green",
-    author: "Marie Ndiaye",
-    image: "src/assets/image/KlaraAndTheSun.jpeg",
-  },
-  {
-    title: "Self Portrait in Green",
-    author: "Marie Ndiaye",
-    image: "src/assets/image/KlaraAndTheSun.jpeg",
-  },
-  {
-    title: "Self Portrait in Green",
-    author: "Marie Ndiaye",
-    image: "src/assets/image/KlaraAndTheSun.jpeg",
-  },
-];
-
 const bookSections = [
   {
     title: "Discover",

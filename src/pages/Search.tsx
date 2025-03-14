@@ -2,7 +2,6 @@ import { IoMdThumbsUp } from "react-icons/io";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import Footer from "../fragments/Footer";
 import Premium from "../components/elements/Premium";
-import Navbar3 from "../components/elements/Navbar3";
 import Navbar from "../components/elements/Navbar";
 
 const books = [

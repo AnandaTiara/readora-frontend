@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { getBookById, getBookByIdRead, getBooks, getHighlightAI } from "../api/books";
 import { Book } from "../types/books";
 

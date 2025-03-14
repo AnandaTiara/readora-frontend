@@ -8,13 +8,11 @@ import {  useGetBookRead, useHihglight } from "../hooks/use-books";
 import { pdfjs, Document, Page } from 'react-pdf';
 import {
   EpubViewer,
-  ReactEpubViewer,
   ViewerRef
 } from 'react-epub-viewer'
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
-import { useMutation } from "@tanstack/react-query";
-import { getHighlightAI } from "../api/books";
+
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
@@ -25,7 +23,6 @@ const Read = () => {
   const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
   const [showSmallPopup, setShowSmallPopup] = useState(false);
   const [showLargePopup, setShowLargePopup] = useState(false);
-  const [location, setLocation] = useState<string | number>(0)
   const viewerRef = useRef<ViewerRef | any>(null);
 
   const [numPages, setNumPages] = useState<number>();
@@ -83,7 +80,7 @@ const Read = () => {
 
         mutate({
           highlightText: selectedText,
-          page: pageNumber.toString(),
+          page: numPages ? numPages.toString(): "1",
           id: data.data.id
         }, {
           onSuccess(data) {
