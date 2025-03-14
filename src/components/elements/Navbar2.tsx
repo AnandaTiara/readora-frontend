@@ -10,6 +10,7 @@ import { cn } from "../../utils/cn";
 import { IoMoon } from "react-icons/io5";
 import { MdLogin } from "react-icons/md";
 import { Book } from "../../types/books";
+import Logo from "../../assets/image/Logo.png";
 
 type Props = {
   className?: string;
@@ -32,7 +33,7 @@ const Navbar2 = ({ className, book }: Props) => {
         <div className="flex justify-between items-center">
           <div className="flex gap-2 items-center">
             <div className="-mt-2 ml-5">
-              <img src="src/assets/image/Logo.png" alt="Logo Readora" />
+              <img src={Logo} alt="Logo Readora" />
             </div>
             <div className=" flex items-end">
               <p
