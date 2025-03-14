@@ -1,45 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
+import { Controller, useForm } from "react-hook-form";
 import Input from "../components/elements/Input";
 import PasswordInput from "../components/elements/PassInput";
 import Button from "../components/elements/Button";
-import { Link } from "react-router-dom";
-import apiInstance from "../API/auth";
-
-export const RegisterUser = async (username: string, password: string, email: string, name: string) => {
-  try {
-    const response = await apiInstance.post("/auth/register", {
-      email,
-      name,
-      password,
-      username,
-    });
-
-    console.log("Register success:", response.data);
-
-    return {
-      success: true,
-      data: response.data.data || {},
-      errors: {},
-      message: response.data.message || "Registration successful",
-    };
-  } catch (error: any) {
-    console.error("Register failed:", error.response?.data || error.message);
-
-    return {
-      success: false,
-      data: error.response?.data?.data || {},
-      errors: error.response?.data?.errors || {},
-      message: error.response?.data?.message || "Unknown error occurred",
-    };
-  }
-};
+import { Link, useNavigate } from "react-router-dom";
+import { useRegister } from "../hooks/use-auth";
+import { RegisterInput } from "../schemas/auth";
 
 const RegisterForm: React.FC = () => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const { handleSubmit, control } = useForm<RegisterInput>({
+    defaultValues: {
+      name: "",
+      username: "",
+      password: "",
+      email: "",
+    },
+    mode: "onChange",
+  });
 
+  const navigate = useNavigate();
+
+  const { mutate: Register } = useRegister();
+
+  const onSubmit = (data: RegisterInput) => {
+    Register(data);
+    console.log(data);
+    navigate("/Login");
+  };
 
   return (
     <div className="w-1/2 flex flex-col justify-center">
@@ -47,16 +34,56 @@ const RegisterForm: React.FC = () => {
         <h2 className="text-primary-500 text-4xl font-semibold font-WulkanDisplayBold">
           Welcome!👋
         </h2>
-        <p className="text-neutral-700 text-basefont-AileronSemiBold mt-6">
+        <p className="text-neutral-700 text-base font-AileronSemiBold mt-6">
           Mulai baca buku sekarang!
         </p>
 
-        <form className="mt-6 space-y-3">
-          <Input value={name} setValue={setName} label="Nama" placeholder="Nama" />
-          <Input value={email} setValue={setEmail} label="Email" placeholder="username@email.com" />
-          <Input value={username} setValue={setUsername} label="Username" placeholder="username@email.com" />
-          <PasswordInput value={password} setValue={setPassword} label="Password" id={"password"} />
-          <Button type="submit" className="w-full">Sign-Up</Button>
+        <form onSubmit={handleSubmit(onSubmit)} className="mt-6 space-y-3">
+          <Controller
+            name="name"
+            control={control}
+            render={({ field }) => (
+              <Input id="name" label="Nama" placeholder="Nama" {...field} />
+            )}
+          />
+
+          <Controller
+            name="email"
+            control={control}
+            render={({ field }) => (
+              <Input
+                id="email"
+                label="Email"
+                placeholder="username@email.com"
+                {...field}
+              />
+            )}
+          />
+
+          <Controller
+            name="username"
+            control={control}
+            render={({ field }) => (
+              <Input
+                 id="username"
+                label="Username"
+                placeholder="Masukkan username"
+                {...field}
+              />
+            )}
+          />
+
+          <Controller
+            name="password"
+            control={control}
+            render={({ field }) => (
+              <PasswordInput id="password" label="Password" {...field} />
+            )}
+          />
+
+          <Button type="submit" className="w-full">
+            Sign-Up
+          </Button>
         </form>
 
         <div className="text-center mt-4">

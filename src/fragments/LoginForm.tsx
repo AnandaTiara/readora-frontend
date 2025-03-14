@@ -1,40 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import Input from "../components/elements/Input";
 import PasswordInput from "../components/elements/PassInput";
 import Button from "../components/elements/Button";
-import {Link } from "react-router-dom";
-import apiInstance from "../API/auth";
-
-export const loginUser = async (username: string, password: string) => {
-  try {
-    const response = await apiInstance.post("/auth/login", {
-      username,
-      password,
-    });
-
-    console.log("Login success:", response.data);
-    return response.data;
-  } catch (error: any) {
-    console.error("Login failed:", error.response?.data || error.message);
-    return {
-      success: false,
-      data: {},
-      errors: error.response?.data?.errors || {},
-      message: error.response?.data?.message || "Unknown error occurred",
-    };
-  }
-};
-
+import { Link } from "react-router-dom";
+import { LoginInput } from "../schemas/auth";
+import { Controller, useForm } from "react-hook-form";
+import { useLogin } from "../hooks/use-auth";
 
 const LoginForm: React.FC = () => {
-  const [username, setUsername] = useState("")
-  const [password, setPasword] = useState("")
+  const { handleSubmit, control } = useForm<LoginInput>({
+    defaultValues: {
+      username: "",
+      password: "",
+    },
+    mode: "onChange",
+  });
 
-  const handleLogin = async () => {
-    const response = await loginUser(username, password)
+  const { mutate: Login } = useLogin();
 
-    console.log(response)
-  } 
+  const onSubmit = (data: LoginInput) => {
+    Login(data);
+  };
 
   return (
     <div className="lg:w-1/2 flex flex-col justify-center">
@@ -46,10 +32,32 @@ const LoginForm: React.FC = () => {
           Mulai baca buku sekarang!
         </p>
 
-        <form className="w-full flex flex-col mb-6" onSubmit={e => e.preventDefault()}>
-          <Input value={username} setValue={setUsername}  label="Email/username" placeholder="username@email.com" id="email" />
-          <PasswordInput setValue={setPasword} value={password} label="Password" id={"password"} />
-          <Button onClick={handleLogin} type="submit">Sign-In</Button>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full flex flex-col mb-6"
+        >
+          <Controller
+            name="username"
+            control={control}
+            render={({ field }) => (
+              <Input
+                label="Email/username"
+                placeholder="username@email.com"
+                id="username"
+                {...field}
+              />
+            )}
+          />
+
+          <Controller
+            name="password"
+            control={control}
+            render={({ field }) => (
+              <PasswordInput id="password" label="Password" {...field} />
+            )}
+          />
+
+          <Button type="submit">Sign-In</Button>
         </form>
 
         <div className="text-center mt-4">

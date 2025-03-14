@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Navbar from "../components/elements/Navbar";
 import Premium from "../components/elements/Premium";
 import Input from "../components/elements/Input";
 import Button from "../components/elements/Button";
 import Footer from "../fragments/Footer";
+import Navbar3 from "../components/elements/Navbar3";
 
 type PremiumStatus = "active" | "inactive" | "pending";
 
@@ -34,7 +34,7 @@ const AccountStatus: React.FC<{
           <p className="text-5xl text-neutral-700 font-WulkanDisplayBold mb-6 text-center">
             Premium Not Active.
           </p>
-          <Button className="bg-primary-500 text-white px-8 py-3 rounded-lg hover:bg-primary-300 active:bg-primary-700 transition cursor-pointer w-lg ">
+          <Button className="bg-primary-500 text-white px-8 py-3 rounded-lg hover:bg-primary-300 active:bg-primary-700 transition cursor-pointer w-lg md:w-md lg:w-xs ">
             Subscribe
           </Button>
         </>
@@ -68,7 +68,7 @@ const Account: React.FC = () => {
   return (
     <div>
       <div className="min-h-screen bg-neutral-500 px-6 py-10">
-        <Navbar />
+        <Navbar3 />
         <div className="mt-30">
           <Premium />
         </div>
@@ -78,7 +78,7 @@ const Account: React.FC = () => {
 
         <div className="flex flex-col min-h-96 lg:flex-row gap-7">
           {/* Account Information */}
-          <div className="w-2/3 bg-neutral-100 shadow-2xl rounded-2xl p-10 flex flex-col">
+          <div className="w-full lg:w-2/3 bg-neutral-100 shadow-2xl rounded-2xl p-10 flex flex-col">
             <h2 className="text-2xl font-AileronBold text-neutral-900 mb-6">
               Account Information
             </h2>

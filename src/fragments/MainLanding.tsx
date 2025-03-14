@@ -2,9 +2,9 @@ import React from "react";
 import BulatMain from "../components/elements/BulatMain";
 import TextMain from "../components/elements/TextMain";
 
-const MainLanding: React.FC = () => {
+const  MainLanding: React.FC = () => {
   return (
-    <div className="bg-neutral-500 w-full py-20 px-6 md:h-fit relative ">
+    <div className="bg-neutral-500 w-full py-20 px-6 md:h-[115rem] relative ">
       <h2 className="text-center font-semibold font-WulkanDisplayBold text-5xl text-primary-500 mb-20 mt-30">
       How do Readora Works?
       </h2>
@@ -30,7 +30,7 @@ const MainLanding: React.FC = () => {
         </div>
 
         {/* Fitur 3 */}
-        <div className="flex items-center gap-6 col-span-2 justify-start md:ml-20 max-w-2xl mt-30 space-x-4">
+        <div className="flex items-center gap-6 col-span-2 justify-start md:ml-20 max-w-2xl mt-30 space-x-4 ">
           <BulatMain>3</BulatMain>
           <TextMain
             title="Community & Collaboration"

@@ -13,10 +13,8 @@ const Footer: React.FC <FooterProps>= ({className}) => {
       <div className="container mx-auto text-center">
         <h2 className="text-7xl font-WulkanDisplayBold mb-3">Readora</h2>
         <div className="cursor-pointerflex gap-10 font-AileronRegular justify-center space-x-8 text-lg mb-6">
-          <a href="#" className="hover:underline">
-            Home
-          </a>
-          <Link to="/Mainpage" className="hover:underline"> Home</Link>
+          <Link to="/Mainpage" className="hover:underline">Home</Link>
+          <Link to="/Saved" className="hover:underline">Saved</Link>
           <Link to="/Community" className="hover:underline"> Community</Link>
           <Link to="/Login" className="hover:underline"> Login</Link>
         </div>

@@ -24,7 +24,7 @@ const Header: React.FC = () => {
           </Button>
         </div>
         <div className="flex flex-col overflow-hidden items-center mt-12 gap-2 sm:h-[3485px]">
-          <Komen avatar="src/assets/image/Ellipse 1.svg" className="absolute lg:bottom-140 lg:right-13 md:bottom-89 md:right-29 top-80 ">Nambahin buku sendiri dan pake fitur Readora... a game changer!</Komen>
+          <Komen avatar="src/assets/image/Ellipse 1.svg" className="absolute lg:top-70 lg:right-80 md:top-50 top-100">Nambahin buku sendiri dan pake fitur Readora... a game changer!</Komen>
           <Komen avatar="src/assets/image/Ellipse 3.svg" className="absolute lg:right-70 lg:top-120 max-w-[180px] md:max-w-[280px] md:top-80 md:right-30 top-90">Segampang itu buat ngejelasin makna!</Komen>
           <Komen avatar="src/assets/image/Ellipse 2.svg" className="absolute lg:top-120 lg:left-20 md:top-50 md:left-40 top-100">Seneng banget dapet temen membaca yang insightnya seru seru!</Komen>
         </div>

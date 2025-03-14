@@ -4,25 +4,27 @@ import Button from "./Button";
 import { BiSearch } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { cn } from "../../utils/cn";
-import { MdLogin } from "react-icons/md";
-import { useLogout, useSession } from "../../hooks/use-auth";
+import { BsList } from "react-icons/bs";
+import { IoClose } from "react-icons/io5";
 
 type Props = {
   className?: string;
   children?: React.ReactNode;
 };
 
-const Navbar = ({ className }: Props) => {
+const Navbar3 = ({ className }: Props) => {
   const [isBrowseOpen, setIsBrowseOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { mutate: logout, isPending } = useLogout();
-  const { data: session, isLoading } = useSession();
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <nav className="fixed w-full top-3 flex justify-center items-center max-w-screen z-40">
       <div
         className={cn(
-          "rounded-xl md:rounded-full px-8 py-1 w-[95%] p-4 backdrop-blur-[19px] bg-white/50",
+          "rounded-xl lg:rounded-full px-8 py-1 w-[95%] p-4 backdrop-blur-[19px] bg-white/50",
           className || ""
         )}
       >
@@ -42,7 +44,7 @@ const Navbar = ({ className }: Props) => {
           </div>
 
           {/* MENUS */}
-          <div className="hidden md:flex gap-6 text-neutral-900 z-10">
+          <div className="hidden lg:flex gap-6 text-neutral-900 z-10">
             <div className="relative">
               <button
                 onClick={() => setIsBrowseOpen(!isBrowseOpen)}
@@ -192,7 +194,7 @@ const Navbar = ({ className }: Props) => {
           </div>
 
           {/* Search Bar */}
-          <div className="relative hidden md:flex items-center w-1/3 z-10">
+          <div className="relative hidden lg:flex items-center w-1/3 z-10">
             <div className="w-full relative">
               <input
                 type="text"
@@ -205,33 +207,44 @@ const Navbar = ({ className }: Props) => {
             </div>
           </div>
 
+          {/* Button */}
           <div>
-            {isLoading ? (
-              <p>Loading...</p>
-            ) : session ? (
-              <Button
-                onClick={() => logout()}
-                disabled={isPending}
-                className="text-sm md:text-base text-neutral-900 hover:underline cursor-pointer bg-accent-50 hover:bg-accent-50 hidden lg:text-base lg:block z-10"
-              >
-                {isPending
-                  ? "Logging out..."
-                  : `Hi, ${session.data.username || "User"}!`}
-              </Button>
-            ) : (
-              <Button className="mt-0 rounded-lg cursor-pointer hidden md:block mr-5 z-10">
-                <Link to="/Register"> Sign up</Link>
-              </Button>
-            )}
+            <Button className="mt-0 rounded-lg  cursor-pointer hidden lg:block mr-5 z-10">
+              <Link to="/Login"> Sign up</Link>
+            </Button>
 
-            <div className="block md:hidden">
-              <MdLogin className="text-3xl mr-4" />
+            {/* Hamburger icon */}
+            <div className="block lg:hidden">
+              {isMobileMenuOpen ? (
+                <IoClose
+                  className="text-3xl mr-2 cursor-pointer"
+                  onClick={toggleMobileMenu}
+                />
+              ) : (
+                <BsList
+                  className="text-3xl mr-10 cursor-pointer"
+                  onClick={toggleMobileMenu}
+                />
+              )}
+              
             </div>
           </div>
         </div>
+
+        {/* Mobile menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden mt-4 px-6">
+            <div className="flex flex-col gap-4 text-base-black cursor-pointer">
+              <Link to="/search" className="hover:text-accent-500">Browse</Link>
+              <Link to="/Community" className="hover:text-accent-500">Community</Link>
+              <Link to="/Saved" className="hover:text-accent-500">Saved</Link>
+              <Link to="/Account" className="hover:text-accent-500">Profile</Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default Navbar3;

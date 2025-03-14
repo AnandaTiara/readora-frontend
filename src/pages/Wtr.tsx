@@ -1,13 +1,93 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
-import Navbar from "../components/elements/Navbar";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdOutlineStarPurple500, MdStar, MdStarBorder } from "react-icons/md";
 import Button from "../components/elements/Button";
 import { IoMdThumbsUp } from "react-icons/io";
 import Footer from "../fragments/Footer";
 import Premium from "../components/elements/Premium";
+import { useGetBook } from "../hooks/use-books";
+import Navbar from "../components/elements/Navbar";
+
+interface Book {
+  id: number;
+  title: string;
+  author: string;
+  cover: string;
+}
+
+const Books: Book[] = [
+  {
+    id: 1,
+    title: "Catcher In The Rye",
+    author: "JD Salinger",
+    cover: "src/assets/image/CatcherInTheRye.jpg",
+  },
+  {
+    id: 2,
+    title: "A Perfect Day to Be Alone",
+    author: "Nanao Aoyama",
+    cover: "src/assets/image/APerfectDayToBeAlone.jpg",
+  },
+  {
+    id: 3,
+    title: "A Teaspoon Of Earth And Sea",
+    author: "Dina Nayeri",
+    cover: "src/assets/image/ATeaSpoon.jpg",
+  },
+  {
+    id: 4,
+    title: "Strange Heart Beating",
+    author: "Eli Goldstone",
+    cover: "src/assets/image/Strange.jpg",
+  },
+  {
+    id: 5,
+    title: "Girl",
+    author: "Edna O'Brien",
+    cover: "src/assets/image/Girl.jpg",
+  },
+  {
+    id: 6,
+    title: "Tomb Of The Unknown Racist",
+    author: "Blanche McCrary Boyd",
+    cover: "src/assets/image/Tomb.jpg",
+  },
+];
+
+// const BookList = ({
+//   books,
+// }: {
+//   text: string;
+//   title: string;
+//   books: Book[];
+// }) => {
+//   return (
+// <div className="mt-10">
+//   <div className="flex gap-4 mt-4 overflow-x-scroll overflow-y-hidden scrollbar-hide whitespace-nowrap max-h-full">
+//     {books.map((book) => (
+//       <div
+//         key={book.id}
+//         className="text-lg p-4 rounded-lg bg-cover min-w-[13rem] text-start hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
+//       >
+//         <img
+//           src={book.cover}
+//           alt={book.title}
+//           className="w-full bg-cover shadow-lg rounded-2xl"
+//         />
+//         <h3 className="mt-2 font-bold text-sm text-primary-500 font-WulkanDisplaySemiBold">
+//           {book.title}
+//         </h3>
+//         <p className="text-xs font-AileronRegular text-neutral-900">
+//           {book.author}
+//         </p>
+//       </div>
+//     ))}
+//   </div>
+// </div>
+// );
+// };
 
 interface RatingProps {
   maxStars?: number;
@@ -128,12 +208,32 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
 };
 
 const Wtr = () => {
+  let { id } = useParams();
+
+  if (!id) {
+    return <div>Loading...</div>;
+  }
+
+  const { data, isLoading, isError } = useGetBook(id);
+
+  if (!data && isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!data) {
+    return <div>Book Not Found</div>;
+  }
+
+  if (isError) {
+    return <div>Book Not Found</div>;
+  }
+
   return (
     <div>
       <div className="bg-neutral-500 min-h-screen p-6 w-full">
         <Navbar />
         <div className="mt-30">
-        <Premium/>
+          <Premium />
         </div>
         <div className="flex flex-col md:flex-row gap-10 mt-20 w-full">
           {/* Bagian Kiri */}
@@ -147,19 +247,21 @@ const Wtr = () => {
             </Link>
 
             {/* Image buku */}
-            <div className="flex justify-center">
+            <div className="flex justify-center max-h-[550px] rounded-lg overflow-hidden">
               <img
-                src="src/assets/image/KlaraAndTheSun.jpeg"
+                src={data.data.cover_image_url}
                 alt="Klara and The Sun"
                 className="w-full h-full rounded-lg justify-center shadow-md"
               />
             </div>
 
             <div className="">
-              <Button className="w-full py-4 cursor-pointer">Read</Button>
-              <Button className="w-full border border-accent-500 bg-neutral-500 text-neutral-900 hover:bg-neutral-600 active:shadow-lg active:bg-neutral-500 cursor-pointer">
-                Read For Later
-              </Button>
+              <Link to={`/book/${data.data.id}/read`}>
+                <Button className="w-full py-4 cursor-pointer"> Read</Button>
+              </Link>
+              {/* <Button className="w-full border border-accent-500 bg-neutral-500 text-neutral-900 hover:bg-neutral-600 active:shadow-lg active:bg-neutral-500 cursor-pointer">
+                <Link to="/Read">Read For Later</Link> XXXXXXXX
+              </Button> */}
             </div>
 
             <RatingComponent
@@ -171,10 +273,10 @@ const Wtr = () => {
           <div className="w-full">
             <div className="max-w-lg mt-13 ">
               <h2 className="text-7xl text-primary-500 font-WulkanDisplayBold">
-                Klara and The Sun
+                {data.data.title}
               </h2>
               <p className="text-2xl font-Aileronregular text-neutral-700 mt-5">
-                Kazuo Ishiguro
+                {data.data.author}
               </p>
             </div>
 
@@ -185,7 +287,7 @@ const Wtr = () => {
               ))}
               <MdOutlineStarPurple500 className="text-neutral-700" />
               <h3 className="ml-2 text-neutral-900 text-4xl font-WulkanDisplayRegular -mt-3">
-                4.21
+                {data.data.rating}
               </h3>
             </div>
 
@@ -197,13 +299,7 @@ const Wtr = () => {
             {/* Deskripsi */}
             <div>
               <p className="mt-7 text-base-black font-AileronRegular">
-                The novel is set in a dystopian future in which some children
-                are genetically engineered ("lifted") for enhanced academic
-                ability. As schooling is provided entirely at home by on-screen
-                tutors, opportunities for socialization are limited and parents
-                who can afford it often buy their children androids as
-                companions. The book is narrated by one such Artificial Friend
-                (AF) called...
+                {data.data.description}
               </p>
               <button className="cursor-pointer text-neutral-800 flex items-center gap-1 text-sm mt-3">
                 Show More <IoIosArrowDown className="mt-1" />
@@ -214,12 +310,11 @@ const Wtr = () => {
             <div>
               <p className="mt-4 text-neutral-800 text-md mb-1">Genres</p>
               <div className="flex gap-2 mt-1 items-center ">
-                <span className="bg-primary-500 text-neutral-50 px-3 py-1 rounded-full text-lg">
-                  Science Fiction
-                </span>
-                <span className="bg-primary-500 text-neutral-50 px-3 py-1 rounded-full text-lg">
-                  Dystopia
-                </span>
+                {data.data.genres.map((genre) => (
+                  <span className="bg-primary-500 text-neutral-50 px-3 py-1 rounded-full text-lg">
+                    {genre.name}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -230,6 +325,26 @@ const Wtr = () => {
               <h3 className="text-5xl font-WulkanDisplayRegular text-primary-500">
                 Similar to title
               </h3>
+              <div className="flex gap-4 mt-4 overflow-x-scroll overflow-y-hidden scrollbar-hide whitespace-nowrap max-h-full">
+                {Books.map((book) => (
+                  <div
+                    key={book.id}
+                    className="text-lg p-4 rounded-lg bg-cover min-w-[13rem] text-start hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
+                  >
+                    <img
+                      src={book.cover}
+                      alt={book.title}
+                      className="w-full bg-cover shadow-lg rounded-2xl"
+                    />
+                    <h3 className="mt-2 font-bold text-sm text-primary-500 font-WulkanDisplaySemiBold">
+                      {book.title}
+                    </h3>
+                    <p className="text-xs font-AileronRegular text-neutral-900">
+                      {book.author}
+                    </p>
+                  </div>
+                ))}
+              </div>
 
               {/* Garis Pemisah */}
               <div className="w-full h-px mt-20 bg-neutral-600 mb-20"></div>

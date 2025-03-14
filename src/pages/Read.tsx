@@ -1,84 +1,172 @@
+import  { useRef, useState } from "react";
 import Footer from "../fragments/Footer";
 import Button from "../components/elements/Button";
 import Navbar2 from "../components/elements/Navbar2";
-import Highlight from 'react-highlight'
+import { useParams } from "react-router-dom";
+import {  useGetBookRead, useHihglight } from "../hooks/use-books";
+
+import { pdfjs, Document, Page } from 'react-pdf';
+import {
+  EpubViewer,
+  ReactEpubViewer,
+  ViewerRef
+} from 'react-epub-viewer'
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
+import { useMutation } from "@tanstack/react-query";
+import { getHighlightAI } from "../api/books";
+
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+
 
 const Read = () => {
+  const [selectedText, setSelectedText] = useState("");
+  const [popupPosition, setPopupPosition] = useState({ x: 0, y: 0 });
+  const [showSmallPopup, setShowSmallPopup] = useState(false);
+  const [showLargePopup, setShowLargePopup] = useState(false);
+  const [location, setLocation] = useState<string | number>(0)
+  const viewerRef = useRef<ViewerRef | any>(null);
+
+  const [numPages, setNumPages] = useState<number>();
+  const [pageNumber, setPageNumber] = useState<number>(1);
+
+  const { mutate } = useHihglight()
+  const [response, setResponse] = useState("")
+
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+    setNumPages(numPages);
+  }
+
+  let { id } = useParams();
+
+  if (!id) {
+    return <div>Loading...</div>;
+  }
+
+  const { data, isLoading, isError } = useGetBookRead(id);
+
+  if (!data && isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if(!data){
+    return <div>Book Not Found</div>;
+  }
+
+  if (isError) {
+    return <div>Book Not Found</div>;
+  }
+
+  const handleMouseUp = () => {
+    setResponse("")
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return;
+
+    const text = selection.toString().trim();
+    if (text !== "") {
+      const range = selection.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+
+      setSelectedText(text);
+      setPopupPosition({
+        x: rect.left + window.scrollX,
+        y: rect.top + window.scrollY - 40,
+      });
+
+      setShowSmallPopup(true);
+      setShowLargePopup(false);
+
+      setTimeout(() => {
+        setShowSmallPopup(false);
+        setShowLargePopup(true);
+
+        mutate({
+          highlightText: selectedText,
+          page: pageNumber.toString(),
+          id: data.data.id
+        }, {
+          onSuccess(data) {
+            setResponse(data.data.response)
+          },
+        });
+      }, 2000);
+
+    } else {
+      setShowSmallPopup(false);
+      setShowLargePopup(false);
+    }
+  };
+
+  const handleNext = () => {
+    if (pageNumber >= 1) {
+      setPageNumber((page) => page + 1);
+    }
+
+    if (viewerRef) {
+      const node = viewerRef.current as ViewerRef
+
+      node.nextPage()
+    }
+  }
+
+  const handlePrev = () => {
+    if (pageNumber > 1) {
+      setPageNumber((page) => page - 1);
+    }
+  }
+
   return (
     <div>
       <div className="flex min-h-screen bg-neutral-500">
         <div className="flex-1 flex flex-col">
-          <Navbar2 className="md:rounded-md " />
+          <Navbar2 book={data.data} className="md:rounded-md" />
 
-          <main className="p-10 overflow-auto max-w-4xl mx-auto text-base-black mt-70 font-TimesNewRoman mb-30 ">
-            <h1 className="text-4xl text-center mb-10 font-TimesNewRoman font-bold ">
-              Chapter 1
-            </h1>
-            <p className="text-lg leading-relaxed">
-              <Highlight className="bg-red-400">Lorem ipsum dolor sit amet</Highlight> consectetur adipisicing elit.
-              Temporibus eveniet voluptas laboriosam neque, voluptate facilis
-              eum labore omnis. Illo similique, ullam ut a beatae, debitis
-              expedita voluptates quae, deleniti ea blanditiis quam? Inventore
-              fugit nesciunt tenetur quae debitis, pariatur quam atque
-              laboriosam magnam, dolore dolor quia nisi neque unde aliquid est
-              blanditiis in, beatae magni adipisci voluptates non ullam. Nulla,
-              sint labore eos dicta, soluta porro molestiae non molestias iure
-              aperiam officia magni distinctio aliquid! Quo, voluptatum aperiam
-              quisquam maxime nostrum id qui cum tenetur voluptate sequi placeat
-              libero dolor autem architecto inventore fuga numquam. Quasi minima
-              quae laudantium neque sed earum aperiam inventore facilis, eum
-              placeat unde animi corporis praesentium at natus perspiciatis iste
-              autem, deserunt sapiente? Nemo dolorum fuga enim quam placeat
-              odio. Natus, sed architecto! Dolorum, dolor ullam officia
-              praesentium quod non quo, quibusdam laboriosam tempore libero
-              impedit odio pariatur beatae reprehenderit, accusantium
-              voluptatibus repellendus iusto! Libero nam alias voluptas esse
-              molestiae doloribus aliquid iusto corrupti inventore deleniti
-              voluptatem, repudiandae recusandae, nulla ab unde iste eaque
-              assumenda delectus est quidem, eligendi dolores. Corrupti deserunt
-              rem, aliquid, aperiam molestias quaerat vitae necessitatibus
-              laboriosam sapiente illo totam, accusantium blanditiis iusto eum
-              eius et exercitationem reprehenderit inventore dolorem quod. Aut
-              eveniet deleniti quisquam iusto eos a veritatis. Ipsam sunt ipsa
-              nesciunt tempora maxime molestias porro vel ratione omnis
-              reprehenderit praesentium sequi, voluptatibus dolorem
-              exercitationem! Voluptates, doloribus labore quia possimus libero,
-              est neque velit culpa, molestiae cumque officia distinctio dolor
-              odit delectus? Quibusdam obcaecati dignissimos porro rerum libero
-              consequatur quaerat adipisci atque et voluptate ut eaque sunt
-              minima animi enim mollitia fuga, eveniet nam, numquam, rem quasi
-              accusamus corrupti cum dolorem! Atque neque, amet rerum dolores
-              cum illo odio ducimus. Magnam alias assumenda consequatur cum
-              aspernatur hic consequuntur voluptatum earum tenetur blanditiis
-              nemo tempore aperiam neque molestiae, modi eos officiis magni
-              atque numquam porro odit laborum enim sit. Voluptatem quos
-              deleniti ducimus inventore, qui voluptates cumque eligendi eius,
-              commodi soluta ea optio cupiditate sequi consequuntur praesentium
-              amet perferendis rem illo quas odit. Inventore neque atque esse
-              doloribus ipsa quaerat possimus quos saepe eaque nostrum. Delectus
-              quod iste natus nulla reiciendis officia rerum aspernatur sapiente
-              corporis inventore aliquam facere, hic sequi dignissimos
-              recusandae voluptates quisquam, neque alias. Dolores, eos
-              exercitationem. Quasi animi facilis, velit nostrum repellendus
-              eligendi iure, voluptas harum consectetur ratione laudantium
-              tempora rerum sit, maiores sunt soluta magnam praesentium adipisci
-              blanditiis perferendis doloribus amet dolor vitae hic. Deleniti,
-              illum magnam totam nulla nesciunt fugit quibusdam officia unde
-              veritatis corporis? A, magnam. Similique, quas cum asperiores
-              ullam numquam placeat delectus perferendis recusandae nemo minus!
-              Vitae dolor quis consequuntur cupiditate ea enim quos ipsa
-              nesciunt provident similique eaque, ratione aut voluptas possimus
-              totam officia autem fugiat vero facere dolorum excepturi!
-              Accusamus quasi amet laborum unde modi maiores, quisquam
-              doloremque quod magni ratione iste dolore quae corrupti pariatur
-              eligendi blanditiis doloribus nostrum accusantium sunt cupiditate
-              eos? Quia facilis necessitatibus nam laboriosam. Quo ducimus, quae
-              incidunt, praesentium omnis odio dolore delectus voluptate neque
-              recusandae mollitia aspernatur eius quia labore nemo! Quos optio
-              nostrum iure?
-            </p>
+          <main
+            className="overflow-auto max-w-4xl h-full mx-auto text-accent-black mt-70 font-TimesNewRoman mb-30"
+            onMouseUp={handleMouseUp}
+          >
+            {data.data.file_type && data.data.file_type === "application/pdf" && (
+            <Document file={data.data.file_url} onLoadSuccess={onDocumentLoadSuccess} className="min-w-[400px]">
+              <Page pageNumber={pageNumber} width={800} onSelect={handleMouseUp} />
+            </Document>
+            )}
 
-            <Button className="flex justify-end cursor-pointer">Next</Button>
+            {data.data.file_type && data.data.file_type === "application/epub+zip" && (
+            //  <div className="min-w-[400px] h-full">
+              // <div style={{ position: "relative", height: "100%" }}>
+                <EpubViewer 
+                  url={data.data.file_url ?? ""}
+                  ref={viewerRef}
+                />
+              // </div>
+            )}
+
+
+
+            {showSmallPopup && (
+              <div
+                className="absolute bg-gray-800 text-white text-xs px-2 py-1 rounded-md"
+                style={{ top: popupPosition.y, left: popupPosition.x }}
+              >
+                Highlight 
+              </div>
+            )}
+
+            {showLargePopup && (
+              <div
+                className="absolute bg-white shadow-lg p-4 rounded-md text-sm border border-gray-300"
+                style={{ top: popupPosition.y, left: popupPosition.x }}
+              >
+                <p className="font-bold">Definition:</p>
+                <p className="">{response ? response : "Loading..."}</p>
+              </div>
+            )}
+
+            <div className="flex justify-between">
+              <Button className="flex justify-end cursor-pointer" onClick={handlePrev}>Previous</Button>
+              <Button className="flex justify-end cursor-pointer" onClick={handleNext}>Next</Button>
+            </div>
           </main>
         </div>
       </div>

@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
 import Navbar from "../components/elements/Navbar";
+// import Navbar3 from "../components/elements/Navbar3";
 import Premium from "../components/elements/Premium";
 import Footer from "../fragments/Footer";
+import { useGetBooks } from "../hooks/use-books";
 
 const booksOfTheDay = [
   {
@@ -156,6 +159,8 @@ const bookSections = [
 ];
 
 const MainPage = () => {
+  const { data } = useGetBooks()
+
   return (
     <div className="h-[150rem] flex flex-col w-full bg-neutral-500">
       <div className="bg-neutral-600 h-[522px] rounded-b-[110px]">
@@ -164,8 +169,7 @@ const MainPage = () => {
           <Premium />
         </div>
         <div className="max-w-[1330px] mx-auto flex min-h-fit flex-col md:flex-row md:items-center md:justify-between px-6 md:px-1 -mt-20">
-          <div className="md:w-1/5 -mt-72 -ml-35 flex-col flex
-          ">
+          <div className="md:w-1/5 -mt-72 -ml-35">
             <h2 className="text-6xl w-[20rem] font-WulkanDisplayBold font-bold text-primary-500 mt-20 md:mt-40">
               Book of the Day.
             </h2>
@@ -177,14 +181,16 @@ const MainPage = () => {
           {/* Bagian Buku */}
           <div className="flex md:w-4/5 overflow-x-auto overflow-y-hidden scrollbar-hide max-w-full">
             <div className="flex gap-8 mt-6 md:mt-42 snap-x snap-mandatory px-4 w-max">
-              {booksOfTheDay.map((book) => (
+              {data ? data.data.books.map((book, idx) => idx < 3 && (
+                <div className="max-h-[400px] w-[300px] rounded-lg overflow-hidden">
                 <img
-                  key={book.title}
-                  src={book.image}
+                  key={book.id} 
+                  src={book.cover_image_url}
                   alt={book.title}
-                  className="w-80 bg-cover hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
-                />
-              ))}
+                  className="w-80 bg-cover hover:scale-105 cursor-pointer transition duration-300 ease-in-out shadow-lg"
+                  />
+                  </div>
+              )) : null}
             </div>
           </div>
         </div>
@@ -200,24 +206,27 @@ const MainPage = () => {
             </p>
 
             <div className="flex gap-4 mt-4 overflow-x-scroll overflow-y-hidden scrollbar-hide whitespace-nowrap max-h-full">
-              {section.books.map((book) => (
+              {data ? data.data.books.map((book) => (
+                <Link  key={book.id} to={`/book/${book.id}`}>
                 <div
-                  key={book.title}
-                  className="text-lg p-4 rounded-lg bg-cover min-w-[13rem] text-start hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
+                  className="text-lg p-4 rounded-lg text-start max-w-[200px] hover:scale-105 cursor-pointer transition duration-300 ease-in-out"
                 >
-                  <img
-                    src={book.image}
-                    alt={book.title}
-                    className="w-full bg-cover"
-                  />
-                  <h3 className="mt-2 font-bold text-sm text-primary-500 font-WulkanDisplaySemiBold">
-                    {book.title}
-                  </h3>
+                  <div className="max-h-[270px] w-[200px] rounded-lg overflow-hidden">
+                    <img
+                      src={book.cover_image_url}
+                      alt={book.title}
+                      className="w-full bg-cover shadow-lg rounded-2xl"
+                    />
+                  </div>
+                    <h3 className="mt-2 font-bold text-sm text-primary-500 font-WulkanDisplaySemiBold block whitespace-normal">
+                      {book.title}
+                    </h3>
                   <p className="text-xs font-AileronRegular text-neutral-900">
                     {book.author}
                   </p>
                 </div>
-              ))}
+                </Link>
+              )) : null}
             </div>
           </section>
         ))}

@@ -1,10 +1,10 @@
 import Footer from "../fragments/Footer";
-import Navbar from "../components/elements/Navbar";
 import { IoChevronBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { IoMdThumbsUp } from "react-icons/io";
 import Premium from "../components/elements/Premium";
+import Navbar from "../components/elements/Navbar";
 const comments = [
   {
     author: "Achmed",
@@ -71,10 +71,10 @@ const ReviewPage = () => {
     <div className="min-h-screen bg-neutral-500 ">
       <Navbar />
       <div className="p-10 mb-30">
-      <div className="mt-30">
-      <Premium/>
-      </div>
-      
+        <div className="mt-30">
+          <Premium />
+        </div>
+
         {/* Back Button */}
         <Link
           to="/Wtr"
@@ -83,20 +83,24 @@ const ReviewPage = () => {
           <IoChevronBack className="mr-2 text-base-black" /> Back
         </Link>
 
-        <div className="flex gap-6">
+        <div className="flex gap-6 flex-col lg:flex-row">
           {/* Left Content */}
-          <div className="flex-1 border-r border-neutral-600">
+          <div className="flex-1">
             {/* Review Header */}
-            <div className="flex gap-4 p-4 w-full">
+            <div className="flex gap-4 p-4 w-full lg:flex-row flex-col">
               <div className="max-w-[150px]">
-              <img
-                src="src/assets/image/KlaraAndTheSun.jpeg"
-                alt="Book Cover"
-                className="w-full object-cover rounded-lg"
-              />
-              
-              <p className="text-primary-500 font-WulkanDisplaySemiBold text-sm mt-3">A Perfect Day to Be Alone</p>
-              <p className="text-neutral-800 font-AileronLight text-sm mt-1">Nanae Aoyama</p>
+                <img
+                  src="src/assets/image/KlaraAndTheSun.jpeg"
+                  alt="Book Cover"
+                  className="w-full object-cover rounded-lg"
+                />
+
+                <p className="text-primary-500 font-WulkanDisplaySemiBold text-sm mt-3">
+                  A Perfect Day to Be Alone
+                </p>
+                <p className="text-neutral-800 font-AileronLight text-sm mt-1">
+                  Nanae Aoyama
+                </p>
               </div>
 
               <div>
@@ -112,7 +116,7 @@ const ReviewPage = () => {
                 </div>
 
                 {/* Deskripsi */}
-                <p className="text-sm text-neutral-800 font-AileronRegular mt-2 max-w-4xl">
+                <p className="text-sm text-neutral-800 font-AileronRegular mt-2 max-w-xl lg:max-w-4xl">
                   Pada akhirnya, apa yang sebenarnya terjadi dengan Finch?
                   Apakah dia benar-benar menemukan kedamaian, atau justru
                   tenggelam dalam kegelapan yang selama ini menghantuinya?
@@ -128,14 +132,14 @@ const ReviewPage = () => {
             </div>
 
             {/* Garis Pemisah */}
-            <div className="w-5xl h-px mt-20 bg-neutral-600"></div>
+            <div className="w-lg lg:w-5xl h-px mt-3 bg-neutral-600"></div>
 
             {/* Comment Box */}
             <div className="mt-4">
               <input
                 type="text"
                 placeholder="Add a comment"
-                className="w-5xl bg-white border border-[#dde1eb] rounded-lg p-2 text-sm"
+                className="w-lg lg:w-5xl bg-white border border-[#dde1eb] rounded-lg p-2 text-sm"
               />
             </div>
 
@@ -146,31 +150,33 @@ const ReviewPage = () => {
                   <p className="font-AileronBold text-xs text-primary-500">
                     {comment.author}
                   </p>
-                  <p className="text-sm mt-1 w-5xl text-neutral-900">{comment.text}</p>
+                  <p className="text-sm mt-1 w-lg lg:w-5xl text-neutral-900">
+                    {comment.text}
+                  </p>
                   <div className="mt-2 flex items-center text-neutral-900 text-sm">
                     <span>{comment.date}</span>
                     <span className="ml-4 flex items-center">
                       <IoMdThumbsUp className="mr-1" /> {comment.likes}
                     </span>
-                    <span className="ml-4 flex items-center">
-                       Reply
-                    </span>
+                    <span className="ml-4 flex items-center">Reply</span>
                   </div>
 
                   {/* Replies */}
                   <div className="ml-6 mt-6 space-y-2">
                     {comment.replies.map((reply, i) => (
                       <div key={i} className="pl-4">
-                        <p className="font-AileronBold text-xs text-primary-500 mt-5">{reply.author}</p>
-                        <p className="text-sm mt-1 text-neutral-900">{reply.text}</p>
+                        <p className="font-AileronBold text-xs text-primary-500 mt-5">
+                          {reply.author}
+                        </p>
+                        <p className="text-sm mt-1 text-neutral-900">
+                          {reply.text}
+                        </p>
                         <div className="mt-2 flex items-center text-gray-500 text-sm">
                           <span>{reply.date}</span>
                           <span className="ml-4 flex items-center">
                             <IoMdThumbsUp className="mr-1" /> {reply.likes}
                           </span>
-                          <span className="ml-4 flex items-center">
-                             Reply
-                          </span>
+                          <span className="ml-4 flex items-center">Reply</span>
                         </div>
                       </div>
                     ))}
@@ -180,14 +186,25 @@ const ReviewPage = () => {
             </div>
           </div>
 
+          {/* Garis Pemisah */}
+          <div className="w-px lg:h-5xl h-lg mt-3 bg-neutral-600"></div>
+
           {/* Right Sidebar */}
           <div className="w-1/4 p-4 ">
-            <h2 className="font-AileronSemiBold text-base-black text-lg mb-4 -mt-5">Random Picks</h2>
+            <h2 className="font-AileronSemiBold text-base-black hidden lg:block lg:text-lg lg:mb-4 lg:-mt-5">
+              Random Picks
+            </h2>
             {randomPicks.map((pick, i) => (
-              <div key={i} className="mb-4">
-                <p className="text-xs font-AileronRegular text-neutral-700">{pick.author}</p>
-                <p className="text-base-black font-AileronBold text-sm mb-2">{pick.title}</p>
-                <p className="text-xs font-AileronRegular text-neutral-700">{pick.date}</p>
+              <div key={i} className="hidden lg:block lg:mb-4">
+                <p className="text-xs font-AileronRegular text-neutral-700">
+                  {pick.author}
+                </p>
+                <p className="text-base-black font-AileronBold text-sm mb-2">
+                  {pick.title}
+                </p>
+                <p className="text-xs font-AileronRegular text-neutral-700">
+                  {pick.date}
+                </p>
               </div>
             ))}
           </div>

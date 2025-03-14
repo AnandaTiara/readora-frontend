@@ -8,8 +8,8 @@ const Section1 = () => {
         Your Gateway to Endless Knowledge
       </h1>
 
-      <div className="flex justify-between w-3/4 items-center lg:space-x-40">
-        <div className="flex flex-col items-center text-center gap-3">
+      <div className="flex justify-between space-x-18 lg:space-x-40 items-center ">
+        <div className="flex flex-col items-center text-center gap-3 ">
           <span className=" font-WulkanDisplayBold text-5xl">186+</span>
           <HiUsers className="text-5xl mt-1" />
           <span className="font-AileronBold text-3xl">Users</span>

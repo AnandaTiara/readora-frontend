@@ -9,13 +9,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { cn } from "../../utils/cn";
 import { IoMoon } from "react-icons/io5";
 import { MdLogin } from "react-icons/md";
+import { Book } from "../../types/books";
 
 type Props = {
   className?: string;
   children?: React.ReactNode;
+  book: Book;
 };
 
-const Navbar2 = ({ className }: Props) => {
+const Navbar2 = ({ className, book }: Props) => {
   const [isBrowseOpen, setIsBrowseOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -52,19 +54,139 @@ const Navbar2 = ({ className }: Props) => {
                 Browse <MdOutlineKeyboardArrowDown />
               </button>
               {isBrowseOpen && (
-                <div className="absolute left-0 mt-2 w-40 bg-white shadow-lg rounded-md py-2">
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                    Categories
-                  </a>
-                  <a href="#" className="block px-4 py-2 hover:bg-gray-100">
-                    Popular
-                  </a>
+                <div className="absolute left-0 mt-2 w-160 bg-neutral-100 shadow-lg rounded-md py-2 z-50 ">
+                  <h2 className="text-2xl font-AileronBold text-primary-700 ml-3">
+                    Browse
+                  </h2>
+                  <div className="grid grid-cols-4">
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Fantasy
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Science Fiction
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Mystery
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Thriller
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Horror
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Romance
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Historical Fiction
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Contemporary
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Adventure
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Drama
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Biography
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Self Help
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      History
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Business
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Science
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Religion
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Poetry
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Travel
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Art & Photography
+                    </Link>
+                    <Link
+                      to="/search"
+                      className="block px-4 py-2 hover:text-accent-500"
+                    >
+                      Mental Help
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
+
             <Link to="/Community" className="hover:text-black">
               {" "}
-              Community
+              Community{" "}
             </Link>
             <Link to="/Saved" className="hover:text-black">
               {" "}
@@ -98,16 +220,16 @@ const Navbar2 = ({ className }: Props) => {
 
         <div className="flex items-center justify-between">
           <div className="ml-5 flex items-center gap-4">
-            <div className="w-24">
+            <div className="w-24 max-h-[150px] rounded-md overflow-hidden">
               <img
-                src="src\assets\image\KlaraAndTheSun.jpeg"
+                src={book.cover_image_url}
                 className="rounded-md"
                 alt=""
               />
             </div>
             <div>
-              <h2 className="text-lg font-AileronBold">Klara And The Sun</h2>
-              <p className="text-sm text-neutral-800 font-AileronRegular" >Kazuo Ishiguro</p>
+              <h2 className="text-lg font-AileronBold">{book.title}</h2>
+              <p className="text-sm text-neutral-800 font-AileronRegular" >{book.author}</p>
             </div>
           </div>
           <div>

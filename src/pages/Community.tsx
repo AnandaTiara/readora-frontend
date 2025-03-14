@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { MdOutlineStarPurple500 } from "react-icons/md";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
-import Navbar from "../components/elements/Navbar";
 import { IoMdThumbsUp } from "react-icons/io";
 import Footer from "../fragments/Footer";
 import Premium from "../components/elements/Premium";
+import Navbar from "../components/elements/Navbar";
 
 interface Review {
   id: number;
@@ -143,8 +143,8 @@ const Pagination: React.FC<PaginationProps> = ({ totalPages }) => {
 const Community = () => {
   return (
     <div>
-      <div className="p-8 bg-neutral-500 h-[150rem]">
-        <Navbar />
+      <div className="p-8 bg-neutral-500 h-[200rem] lg:h-[150rem]">
+        <Navbar/>
         <div className="mt-30">
           <Premium />
         </div>
@@ -152,7 +152,7 @@ const Community = () => {
           Community
         </h2>
 
-        <div className="flex gap-8 mt-4">
+        <div className="flex gap-8 mt-4 flex-col lg:flex-row">
           {/* KIRI: Reviews */}
           <div className="flex-1">
             {reviews.map((review) => (
@@ -213,14 +213,14 @@ const Community = () => {
           </div>
 
           {/* KANAN: Random Picks */}
-          <div className="w-1/3 p-4 border-l border-l-neutral-600">
-            <h2 className="text-2xl font-AileronSemiBold text-base-black mb-10 -mt-5">
+          <div className="w-full lg:w-1/3 p-4 lg:border-l lg:border-l-neutral-600">
+            <h2 className="text-3xl lg:text-2xl font-AileronSemiBold text-base-black mb-10 -mt-5">
               Random Picks
             </h2>
             {reviews.slice(0, 3).map((review) => (
               <div key={review.id} className="mb-4">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-base-black text-xs">
+                <div className="flex items-center gap-2 mt-10">
+                  <h3 className="font-bold text-base-black text-xl lg:text-sm">
                     {review.name}
                   </h3>
                   <div className="flex text-accent-500">
@@ -232,13 +232,13 @@ const Community = () => {
                     ))}
                   </div>
                 </div>
-                <p className="text-xs text-neutral-800 mt-3">
+                <p className=" text-lg lg:text-sm text-neutral-800 mt-3">
                   {review.text}...
                 </p>
-                <div className="mt-4 flex items-center text-neutral-700 font-AileronRegular text-sm">
+                <div className="mt-4 flex items-center text-neutral-700 font-AileronRegular text-lg lg:text-sm">
                   <span>{review.date}</span>
                   <span className="ml-4 flex items-center text-neutral-800">
-                    <IoMdThumbsUp className="mr-1 -mt-1 text-2xl" />{" "}
+                    <IoMdThumbsUp className="mr-1 -mt-1 text-3xl lg:text-2xl" />{" "}
                     {review.likes}
                   </span>
                 </div>
