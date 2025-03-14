@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getSession, Login, Register } from "../api/auth";
-import { RegisterInput } from "../schemas/auth";
+import { RegisterInput, Session } from "../schemas/auth";
 import { useNavigate } from "react-router-dom";
 
 export const useRegister = () => {
@@ -47,7 +47,7 @@ export const useLogout = () => {
 };
 
 export const useSession = () => {
-  return useQuery({
+  return useQuery<Session>({
     queryKey: ["user"],
     queryFn: getSession,
     retry: false,

@@ -15,3 +15,16 @@ export const RegisterSchema = z.object({
 });
 
 export type RegisterInput = z.infer<typeof RegisterSchema>;
+
+export const SessionSchema = z.object({
+  data: z.object({
+    email: z.string().email(),
+    id: z.string(), 
+    name: z.string(),
+    username: z.string(),
+  }),
+  errors: z.record(z.unknown()).optional(), 
+  message: z.string(),
+});
+
+export type Session = z.infer<typeof SessionSchema>;
