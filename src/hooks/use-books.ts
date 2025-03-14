@@ -5,7 +5,7 @@ import {
   getBookByIdRead,
   getBooks,
   getHighlightAI,
-} from "../../src/api/books";
+} from "../lib/api/books";
 import { Book, HighlightPayload, HighlightResponse } from "../types/books";
 
 export const useGetBooks = () => {

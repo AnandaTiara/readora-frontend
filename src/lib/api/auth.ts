@@ -1,9 +1,10 @@
 /* eslint-disable */
-import { LoginInput, RegisterInput } from "../schemas/auth";
+
+import { LoginInput, RegisterInput } from "../../schemas/auth";
 
 const base_url = import.meta.env.VITE_API_BASE_URL;
 
-export async function Register(data: RegisterInput): Promise<RegisterInput> {
+export async function Register(data: RegisterInput) {
   const response = await fetch(`${base_url}/api/auth/register`, {
     method: "POST",
     headers: {
@@ -11,9 +12,11 @@ export async function Register(data: RegisterInput): Promise<RegisterInput> {
     },
     body: JSON.stringify(data),
   });
+
   if (!response.ok) throw new Error("Failed to register");
+
   const res = await response.json();
-  console.log(res);
+  console.log(res); 
   return res;
 }
 
@@ -25,13 +28,16 @@ export async function Login(data: LoginInput) {
     },
     body: JSON.stringify(data),
   });
+
   if (!response.ok) throw new Error("Failed to login");
+
   const res = await response.json();
   return res;
 }
 
 export async function getSession() {
   const token = localStorage.getItem("token");
+
   const response = await fetch(`${base_url}/api/auth/session`, {
     method: "GET",
     headers: {
@@ -39,7 +45,9 @@ export async function getSession() {
       Authorization: `Bearer ${token}`,
     },
   });
+
   if (!response.ok) throw new Error("Failed to get session");
+
   const res = await response.json();
   return res;
 }
