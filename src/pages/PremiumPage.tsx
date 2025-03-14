@@ -5,6 +5,8 @@ import { IoMdClose } from "react-icons/io";
 import Footer from "../fragments/Footer";
 import { IoIosCheckmarkCircle } from "react-icons/io";
 import Button from "../components/elements/Button";
+import Logo from "../assets/image/Logo.png";
+import Premium from "../assets/image/Premium.png";
 
 type Props = {
   className?: string;
@@ -27,7 +29,7 @@ const PremiumPage: React.FC = ({ className }: Props) => {
               <div className="flex gap-2 items-center">
                 <div className="-mt-2">
                   <img
-                    src="src/assets/image/Logo.png"
+                    src={Logo}
                     alt="Logo Readora"
                     className="h-6"
                   />
@@ -157,7 +159,7 @@ const PremiumPage: React.FC = ({ className }: Props) => {
 
           <div className="w-full md:w-1/2 -mr-0 flex items-center lg:justify-center mt-23">
             <img
-              src="src/assets/image/Premium.png"
+              src={Premium}
               alt="Premium Illustration"
               className="h-100 w-full p-4 lg:p-2  object-cover md:h-[57rem] rounded-3xl lg:object-contain "
             />
