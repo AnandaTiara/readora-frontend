@@ -1,7 +1,7 @@
 // @ts-ignore
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { RegisterInput, Session } from "../schemas/auth";
+import { LoginInput, RegisterInput, Session } from "../schemas/auth";
 import { useNavigate } from "react-router-dom";
 import { getSession, Login, Register } from "../api/auth";
 
@@ -22,10 +22,10 @@ export const useLogin = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  return useMutation({
+  return useMutation<any, Error, LoginInput>({
     mutationKey: ["login"],
     mutationFn: Login,
-    onSuccess: (res: any) => {
+    onSuccess: (res: { data: { token: string } }) => {
       localStorage.setItem("token", res.data.token);
       queryClient.invalidateQueries({ queryKey: ["user"] });
       navigate("/");
