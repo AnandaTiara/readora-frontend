@@ -4,7 +4,8 @@ import Footer from "../fragments/Footer";
 import Button from "../components/elements/Button";
 import Navbar2 from "../components/elements/Navbar2";
 import { useParams } from "react-router-dom";
-import {  useGetBookRead, useHihglight } from "../hooks/use-books";
+import {  useGetBookRead, useHighlight } from "../hooks/use-books";
+import { HighlightResponse } from "../types/books";
 
 import { pdfjs, Document, Page } from 'react-pdf';
 import {
@@ -29,7 +30,7 @@ const Read = () => {
   const [numPages, setNumPages] = useState<number>();
   const [pageNumber, setPageNumber] = useState<number>(1);
 
-  const { mutate } = useHihglight()
+  const { mutate } = useHighlight()
   const [response, setResponse] = useState("")
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
@@ -79,15 +80,18 @@ const Read = () => {
         setShowSmallPopup(false);
         setShowLargePopup(true);
 
-        mutate({
-          highlightText: selectedText,
-          page: numPages ? numPages.toString(): "1",
-          id: data.data.id
-        }, {
-          onSuccess(data) {
-            setResponse(data.data.response)
+        mutate(
+          {
+            highlightText: selectedText,
+            page: numPages ? numPages.toString() : "1",
+            id: data.data.id,
           },
-        });
+          {
+            onSuccess(data : HighlightResponse) {
+              setResponse(data.data.response);
+            },
+          }
+        );
       }, 2000);
 
     } else {

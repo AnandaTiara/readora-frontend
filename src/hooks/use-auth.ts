@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { LoginInput, RegisterInput, Session } from "../schemas/auth";
 import { useNavigate } from "react-router-dom";
-import { getSession, Login, Register } from "../api/auth";
+import { getSession, Login, Register } from "../../src/api/auth";
 
 export const useRegister = () => {
   const queryClient = useQueryClient();

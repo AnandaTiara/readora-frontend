@@ -26,4 +26,18 @@ export type Book = {
     file_type?: "application/pdf" | "application/epub+zip";
     rating?: string
   };
+
+  export type HighlightPayload = {
+    highlightText: string;
+    page: string;
+    id: string;
+  };
+  
+  export type HighlightResponse = {
+    data: {
+      response: string;
+    };
+  };
+
+  
   
